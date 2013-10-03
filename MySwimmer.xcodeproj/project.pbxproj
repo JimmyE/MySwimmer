@@ -14,14 +14,19 @@
 		38A2CAB117FCB1ED00087FCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAB017FCB1ED00087FCD /* main.m */; };
 		38A2CAB517FCB1ED00087FCD /* TTGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAB417FCB1ED00087FCD /* TTGAppDelegate.m */; };
 		38A2CAB817FCB1ED00087FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A2CAB617FCB1ED00087FCD /* Main.storyboard */; };
-		38A2CABB17FCB1ED00087FCD /* TTGFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CABA17FCB1ED00087FCD /* TTGFirstViewController.m */; };
-		38A2CABE17FCB1ED00087FCD /* TTGSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CABD17FCB1ED00087FCD /* TTGSecondViewController.m */; };
 		38A2CAC017FCB1ED00087FCD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38A2CABF17FCB1ED00087FCD /* Images.xcassets */; };
 		38A2CAC717FCB1ED00087FCD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAC617FCB1ED00087FCD /* XCTest.framework */; };
 		38A2CAC817FCB1ED00087FCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA417FCB1ED00087FCD /* Foundation.framework */; };
 		38A2CAC917FCB1ED00087FCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA817FCB1ED00087FCD /* UIKit.framework */; };
 		38A2CAD117FCB1ED00087FCD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38A2CACF17FCB1ED00087FCD /* InfoPlist.strings */; };
 		38A2CAD317FCB1ED00087FCD /* MySwimmerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAD217FCB1ED00087FCD /* MySwimmerTests.m */; };
+		38A2CADD17FCB20300087FCD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CADC17FCB20300087FCD /* CoreData.framework */; };
+		38A2CAE017FCB21900087FCD /* SwimmerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CADE17FCB21900087FCD /* SwimmerModel.xcdatamodeld */; };
+		38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAE317FCB26D00087FCD /* TTGSwimmersTVC.m */; };
+		38A2CAE717FCB29E00087FCD /* TTGMeetTVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */; };
+		38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */; };
+		38A2CAEF17FCB4D000087FCD /* Swimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAEE17FCB4D000087FCD /* Swimmer.m */; };
+		38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +51,24 @@
 		38A2CAB317FCB1ED00087FCD /* TTGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGAppDelegate.h; sourceTree = "<group>"; };
 		38A2CAB417FCB1ED00087FCD /* TTGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGAppDelegate.m; sourceTree = "<group>"; };
 		38A2CAB717FCB1ED00087FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		38A2CAB917FCB1ED00087FCD /* TTGFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGFirstViewController.h; sourceTree = "<group>"; };
-		38A2CABA17FCB1ED00087FCD /* TTGFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGFirstViewController.m; sourceTree = "<group>"; };
-		38A2CABC17FCB1ED00087FCD /* TTGSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGSecondViewController.h; sourceTree = "<group>"; };
-		38A2CABD17FCB1ED00087FCD /* TTGSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTGSecondViewController.m; sourceTree = "<group>"; };
 		38A2CABF17FCB1ED00087FCD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		38A2CAC517FCB1ED00087FCD /* MySwimmerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySwimmerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A2CAC617FCB1ED00087FCD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		38A2CACE17FCB1ED00087FCD /* MySwimmerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MySwimmerTests-Info.plist"; sourceTree = "<group>"; };
 		38A2CAD017FCB1ED00087FCD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		38A2CAD217FCB1ED00087FCD /* MySwimmerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySwimmerTests.m; sourceTree = "<group>"; };
+		38A2CADC17FCB20300087FCD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		38A2CADF17FCB21900087FCD /* SwimmerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwimmerModel.xcdatamodel; sourceTree = "<group>"; };
+		38A2CAE217FCB26D00087FCD /* TTGSwimmersTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmersTVC.h; sourceTree = "<group>"; };
+		38A2CAE317FCB26D00087FCD /* TTGSwimmersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmersTVC.m; sourceTree = "<group>"; };
+		38A2CAE517FCB29E00087FCD /* TTGMeetTVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGMeetTVCViewController.h; sourceTree = "<group>"; };
+		38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGMeetTVCViewController.m; sourceTree = "<group>"; };
+		38A2CAE917FCB3DC00087FCD /* TTGSwimmerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerCell.h; sourceTree = "<group>"; };
+		38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerCell.m; sourceTree = "<group>"; };
+		38A2CAED17FCB4D000087FCD /* Swimmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swimmer.h; sourceTree = "<group>"; };
+		38A2CAEE17FCB4D000087FCD /* Swimmer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmer.m; sourceTree = "<group>"; };
+		38A2CAF017FCB81400087FCD /* TTGSwimmerDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerDetailVC.h; sourceTree = "<group>"; };
+		38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerDetailVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A2CADD17FCB20300087FCD /* CoreData.framework in Frameworks */,
 				38A2CAA717FCB1ED00087FCD /* CoreGraphics.framework in Frameworks */,
 				38A2CAA917FCB1ED00087FCD /* UIKit.framework in Frameworks */,
 				38A2CAA517FCB1ED00087FCD /* Foundation.framework in Frameworks */,
@@ -104,6 +118,7 @@
 		38A2CAA317FCB1ED00087FCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38A2CADC17FCB20300087FCD /* CoreData.framework */,
 				38A2CAA417FCB1ED00087FCD /* Foundation.framework */,
 				38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */,
 				38A2CAA817FCB1ED00087FCD /* UIKit.framework */,
@@ -115,15 +130,15 @@
 		38A2CAAA17FCB1ED00087FCD /* MySwimmer */ = {
 			isa = PBXGroup;
 			children = (
+				38A2CAEC17FCB4A100087FCD /* model */,
+				38A2CAE817FCB3C500087FCD /* views */,
+				38A2CAE117FCB24700087FCD /* controllers */,
 				38A2CAB317FCB1ED00087FCD /* TTGAppDelegate.h */,
 				38A2CAB417FCB1ED00087FCD /* TTGAppDelegate.m */,
 				38A2CAB617FCB1ED00087FCD /* Main.storyboard */,
-				38A2CAB917FCB1ED00087FCD /* TTGFirstViewController.h */,
-				38A2CABA17FCB1ED00087FCD /* TTGFirstViewController.m */,
-				38A2CABC17FCB1ED00087FCD /* TTGSecondViewController.h */,
-				38A2CABD17FCB1ED00087FCD /* TTGSecondViewController.m */,
 				38A2CABF17FCB1ED00087FCD /* Images.xcassets */,
 				38A2CAAB17FCB1ED00087FCD /* Supporting Files */,
+				38A2CADE17FCB21900087FCD /* SwimmerModel.xcdatamodeld */,
 			);
 			path = MySwimmer;
 			sourceTree = "<group>";
@@ -155,6 +170,37 @@
 				38A2CACF17FCB1ED00087FCD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38A2CAE117FCB24700087FCD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38A2CAE217FCB26D00087FCD /* TTGSwimmersTVC.h */,
+				38A2CAE317FCB26D00087FCD /* TTGSwimmersTVC.m */,
+				38A2CAE517FCB29E00087FCD /* TTGMeetTVCViewController.h */,
+				38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */,
+				38A2CAF017FCB81400087FCD /* TTGSwimmerDetailVC.h */,
+				38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		38A2CAE817FCB3C500087FCD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				38A2CAE917FCB3DC00087FCD /* TTGSwimmerCell.h */,
+				38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		38A2CAEC17FCB4A100087FCD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				38A2CAED17FCB4D000087FCD /* Swimmer.h */,
+				38A2CAEE17FCB4D000087FCD /* Swimmer.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +301,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A2CAE717FCB29E00087FCD /* TTGMeetTVCViewController.m in Sources */,
 				38A2CAB517FCB1ED00087FCD /* TTGAppDelegate.m in Sources */,
-				38A2CABB17FCB1ED00087FCD /* TTGFirstViewController.m in Sources */,
-				38A2CABE17FCB1ED00087FCD /* TTGSecondViewController.m in Sources */,
+				38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */,
+				38A2CAE017FCB21900087FCD /* SwimmerModel.xcdatamodeld in Sources */,
+				38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */,
 				38A2CAB117FCB1ED00087FCD /* main.m in Sources */,
+				38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */,
+				38A2CAEF17FCB4D000087FCD /* Swimmer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +527,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		38A2CADE17FCB21900087FCD /* SwimmerModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				38A2CADF17FCB21900087FCD /* SwimmerModel.xcdatamodel */,
+			);
+			currentVersion = 38A2CADF17FCB21900087FCD /* SwimmerModel.xcdatamodel */;
+			path = SwimmerModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 38A2CA9917FCB1ED00087FCD /* Project object */;
 }

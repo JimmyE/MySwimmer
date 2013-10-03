@@ -1,5 +1,5 @@
 //
-//  TTGFirstViewController.h
+//  TTGSwimmersTVC.h
 //  MySwimmer
 //
 //  Created by Jim on 10/2/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TTGFirstViewController : UIViewController
+@interface TTGSwimmersTVC : UITableViewController
 
 @end

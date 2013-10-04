@@ -104,6 +104,7 @@
     Swimmer *info = [_fetchedResultsController objectAtIndexPath:indexPath];
 
     cell.nameField.text = [info fullName];
+    cell.ageField.text = [@([info age]) description];
     
     return cell;
 }

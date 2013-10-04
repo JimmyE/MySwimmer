@@ -10,5 +10,6 @@
 
 @interface TTGSwimmerCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameField;
+@property (weak, nonatomic) IBOutlet UILabel *ageField;
 
 @end

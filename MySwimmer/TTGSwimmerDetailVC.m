@@ -7,11 +7,13 @@
 //
 
 #import "TTGSwimmerDetailVC.h"
+#import "Swimmer+SwimmerCatgy.h"
 
 @interface TTGSwimmerDetailVC ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *birthDateField;
+@property (weak, nonatomic) IBOutlet UILabel *birthDateLabel;
 
 @property (nonatomic, strong) Swimmer *swimmer;
 
@@ -28,19 +30,21 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [self editButtonItem];
+    self.birthDateField.maximumDate = [NSDate date];
 
     if (swimmerId == nil)
     {
-        NSLog(@"New swimmer");
-        self.editing = YES;
         _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
+        _swimmer.birthDate = [NSDate date];
+        self.editing = YES;
     }
     else
     {
         _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
-        [self loadSwimmer];
         self.editing = NO;
     }
+
+    [self loadSwimmer];
 }
 
 - (void) save
@@ -48,6 +52,15 @@
     NSLog(@"Save swimmer");
     _swimmer.firstName = self.firstNameField.text;
     _swimmer.lastName = self.lastNameField.text;
+    
+    // strip 'time' component from date field
+    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDateComponents* components = [calendar components:flags fromDate:self.birthDateField.date];
+    _swimmer.birthDate = [calendar dateFromComponents:components];
+    
+    self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
+
     self.editing = NO;
 }
 
@@ -95,13 +108,17 @@
 {
     self.firstNameField.text = _swimmer.firstName;
     self.lastNameField.text = _swimmer.lastName;
+    self.birthDateField.date = _swimmer.birthDate;
+    self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
 }
 
 - (void) enableDisableFields:(BOOL) enableFields
 {
     self.firstNameField.enabled = enableFields;
     self.lastNameField.enabled = enableFields;
-    self.birthDateField.enabled = enableFields;
+    
+    self.birthDateLabel.hidden = enableFields;
+    self.birthDateField.hidden = !enableFields;
 }
 
 @end

@@ -11,4 +11,6 @@
 @interface Swimmer (SwimmerCatgy)
 
 - (NSString*) fullName;
+- (NSInteger) age;
+- (NSString*) birthDateMMDDYYY;
 @end

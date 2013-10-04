@@ -27,22 +27,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = [self editButtonItem];
-    self.navigationItem.rightBarButtonItem.action = @selector(save);
 
     if (swimmerId == nil)
     {
         NSLog(@"New swimmer");
-        [self setEditing:YES animated:NO];  // new swimmer
+        self.editing = YES;
         _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     }
     else
     {
-        NSLog(@"Edit swimmer.id: %ld", (long)swimmerId);
-        [self setEditing:NO animated:NO];
         _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
         [self loadSwimmer];
+        self.editing = NO;
     }
 }
 
@@ -51,21 +48,37 @@
     NSLog(@"Save swimmer");
     _swimmer.firstName = self.firstNameField.text;
     _swimmer.lastName = self.lastNameField.text;
-    
+    self.editing = NO;
 }
 
-- (void)setEditing:(BOOL)flag animated:(BOOL)animated
+- (void) enterEditMode
 {
-    [super setEditing:flag animated:animated];
-    
-    [self enableDisableFields:flag]	;
+    [self setEditing:YES animated:YES];
+}
 
+- (void) cancel
+{
+    [self loadSwimmer];
+    self.editing = NO;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
     
-    if (flag == YES){
-        // Change views to edit mode.
+    [self enableDisableFields:editing];
+    
+    self.navigationItem.rightBarButtonItem.action = editing ? @selector(save) : @selector(enterEditMode);
+    
+    if (!editing)
+    {
+        self.navigationItem.leftBarButtonItem = nil;
     }
-    else {
-        // Save the changes if needed and change the views to noneditable.
+    else
+    {
+        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+        self.navigationItem.leftBarButtonItem = cancelButtonItem;
+        cancelButtonItem = nil;
     }
 }
 
@@ -74,17 +87,8 @@
     [textField resignFirstResponder];
     return YES;
 }
+
 - (IBAction)textFieldDidEndEditing:(UITextField*)textField    {
-    /*
-    if( textField == self.firstNameField )
-        _swimmer.name = textField.text;
-    else if( textField == self.lastNameField  )
-        _swimmer.name = textField.text;
-    
-    NSLog(@"swimmer.name %@", _swimmer.name);
-    
-    [self becomeFirstResponder];
-     */
 }
 
 - (void) loadSwimmer

@@ -126,6 +126,8 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
+        
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];  // DELETE old database, rerun app and should be ok
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }

@@ -9,6 +9,7 @@
 #import "TTGSwimmersTVC.h"
 #import "TTGSwimmerDetailVC.h"
 #import "TTGSwimmerCell.h"
+#import "Swimmer+SwimmerCatgy.h"
 
 @interface TTGSwimmersTVC ()
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
@@ -31,7 +32,7 @@
 {
     [super viewDidLoad];
 
-    [self loadTable];
+  //  [self loadTable];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,6 +62,7 @@
 
 - (void) loadTable
 {
+    NSLog(@"loadTable");
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		// Update to handle the error appropriately.
@@ -101,7 +103,7 @@
     // Configure the cell...
     Swimmer *info = [_fetchedResultsController objectAtIndexPath:indexPath];
 
-    cell.nameField.text = info.name;
+    cell.nameField.text = [info fullName];
     
     return cell;
 }
@@ -160,7 +162,7 @@
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"name" ascending:NO];
+                              initWithKey:@"lastName" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
@@ -168,7 +170,7 @@
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:managedObjectContext sectionNameKeyPath:nil
-                                                   cacheName:@"Root"];
+                                                   cacheName:@"Root3"];
     self.fetchedResultsController = theFetchedResultsController;
     //_fetchedResultsController.delegate = self;
     

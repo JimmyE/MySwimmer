@@ -49,8 +49,8 @@
 - (void) save
 {
     NSLog(@"Save swimmer");
-    _swimmer.name = self.firstNameField.text;
-    _swimmer.name = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
+    _swimmer.firstName = self.firstNameField.text;
+    _swimmer.lastName = self.lastNameField.text;
     
 }
 
@@ -89,7 +89,8 @@
 
 - (void) loadSwimmer
 {
-    self.firstNameField.text = _swimmer.name;
+    self.firstNameField.text = _swimmer.firstName;
+    self.lastNameField.text = _swimmer.lastName;
 }
 
 - (void) enableDisableFields:(BOOL) enableFields

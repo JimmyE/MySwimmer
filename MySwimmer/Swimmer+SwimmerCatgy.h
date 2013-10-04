@@ -1,5 +1,5 @@
 //
-//  Swimmer.m
+//  Swimmer+SwimmerCatgy.h
 //  MySwimmer
 //
 //  Created by Jim on 10/4/13.
@@ -8,12 +8,7 @@
 
 #import "Swimmer.h"
 
+@interface Swimmer (SwimmerCatgy)
 
-@implementation Swimmer
-
-@dynamic birthDate;
-@dynamic gender;
-@dynamic firstName;
-@dynamic lastName;
-
+- (NSString*) fullName;
 @end

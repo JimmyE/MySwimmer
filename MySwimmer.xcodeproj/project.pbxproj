@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38198DFD17FEF94700BD3740 /* Swimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38198DFC17FEF94700BD3740 /* Swimmer.m */; };
+		38198E0017FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */; };
 		38A2CAA517FCB1ED00087FCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA417FCB1ED00087FCD /* Foundation.framework */; };
 		38A2CAA717FCB1ED00087FCD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */; };
 		38A2CAA917FCB1ED00087FCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA817FCB1ED00087FCD /* UIKit.framework */; };
@@ -25,7 +27,6 @@
 		38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAE317FCB26D00087FCD /* TTGSwimmersTVC.m */; };
 		38A2CAE717FCB29E00087FCD /* TTGMeetTVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */; };
 		38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */; };
-		38A2CAEF17FCB4D000087FCD /* Swimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAEE17FCB4D000087FCD /* Swimmer.m */; };
 		38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38198DFB17FEF94700BD3740 /* Swimmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swimmer.h; sourceTree = "<group>"; };
+		38198DFC17FEF94700BD3740 /* Swimmer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmer.m; sourceTree = "<group>"; };
+		38198DFE17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swimmer+SwimmerCatgy.h"; sourceTree = "<group>"; };
+		38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Swimmer+SwimmerCatgy.m"; sourceTree = "<group>"; };
 		38A2CAA117FCB1ED00087FCD /* MySwimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A2CAA417FCB1ED00087FCD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,8 +70,6 @@
 		38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGMeetTVCViewController.m; sourceTree = "<group>"; };
 		38A2CAE917FCB3DC00087FCD /* TTGSwimmerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerCell.h; sourceTree = "<group>"; };
 		38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerCell.m; sourceTree = "<group>"; };
-		38A2CAED17FCB4D000087FCD /* Swimmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swimmer.h; sourceTree = "<group>"; };
-		38A2CAEE17FCB4D000087FCD /* Swimmer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmer.m; sourceTree = "<group>"; };
 		38A2CAF017FCB81400087FCD /* TTGSwimmerDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerDetailVC.h; sourceTree = "<group>"; };
 		38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerDetailVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,8 +200,10 @@
 		38A2CAEC17FCB4A100087FCD /* model */ = {
 			isa = PBXGroup;
 			children = (
-				38A2CAED17FCB4D000087FCD /* Swimmer.h */,
-				38A2CAEE17FCB4D000087FCD /* Swimmer.m */,
+				38198DFB17FEF94700BD3740 /* Swimmer.h */,
+				38198DFC17FEF94700BD3740 /* Swimmer.m */,
+				38198DFE17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.h */,
+				38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -303,12 +308,13 @@
 			files = (
 				38A2CAE717FCB29E00087FCD /* TTGMeetTVCViewController.m in Sources */,
 				38A2CAB517FCB1ED00087FCD /* TTGAppDelegate.m in Sources */,
+				38198E0017FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m in Sources */,
 				38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */,
 				38A2CAE017FCB21900087FCD /* SwimmerModel.xcdatamodeld in Sources */,
 				38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */,
 				38A2CAB117FCB1ED00087FCD /* main.m in Sources */,
 				38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */,
-				38A2CAEF17FCB4D000087FCD /* Swimmer.m in Sources */,
+				38198DFD17FEF94700BD3740 /* Swimmer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +523,7 @@
 				38A2CAD817FCB1ED00087FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38A2CAD917FCB1ED00087FCD /* Build configuration list for PBXNativeTarget "MySwimmerTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +532,7 @@
 				38A2CADB17FCB1ED00087FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

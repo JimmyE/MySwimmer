@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TTGSwimmerCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *nameField;
 
 @end

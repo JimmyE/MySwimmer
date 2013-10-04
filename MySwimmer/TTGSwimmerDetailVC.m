@@ -19,8 +19,9 @@
 @end
 
 @implementation TTGSwimmerDetailVC
-//@synthesize swimmer;
+
 @synthesize swimmerId;
+@synthesize managedObjectContext;
 
 
 - (void)viewDidLoad
@@ -30,20 +31,27 @@
     self.navigationItem.rightBarButtonItem = [self editButtonItem];
     self.navigationItem.rightBarButtonItem.action = @selector(save);
 
-//    if (swimmer.objectID == nil)
-    if (swimmerId == 0)
+    if (swimmerId == nil)
     {
+        NSLog(@"New swimmer");
         [self setEditing:YES animated:NO];  // new swimmer
+        _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     }
     else
     {
+        NSLog(@"Edit swimmer.id: %ld", (long)swimmerId);
         [self setEditing:NO animated:NO];
+        _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+        [self loadSwimmer];
     }
 }
 
 - (void) save
 {
     NSLog(@"Save swimmer");
+    _swimmer.name = self.firstNameField.text;
+    _swimmer.name = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
+    
 }
 
 - (void)setEditing:(BOOL)flag animated:(BOOL)animated
@@ -61,17 +69,27 @@
     }
 }
 
-- (IBAction)cancelTapped:(id)sender {
-}
-
-- (IBAction)doneTapped:(id)sender {
-    // save data
-}
-
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+- (IBAction)textFieldDidEndEditing:(UITextField*)textField    {
+    /*
+    if( textField == self.firstNameField )
+        _swimmer.name = textField.text;
+    else if( textField == self.lastNameField  )
+        _swimmer.name = textField.text;
+    
+    NSLog(@"swimmer.name %@", _swimmer.name);
+    
+    [self becomeFirstResponder];
+     */
+}
+
+- (void) loadSwimmer
+{
+    self.firstNameField.text = _swimmer.name;
 }
 
 - (void) enableDisableFields:(BOOL) enableFields

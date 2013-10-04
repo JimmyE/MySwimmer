@@ -13,5 +13,8 @@
 @interface TTGSwimmerDetailVC : UIViewController  <UITextFieldDelegate>
 
 //@property (nonatomic, weak) Swimmer *swimmer;
-@property (nonatomic) NSInteger swimmerId;
+@property (nonatomic) NSManagedObjectID *swimmerId;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end

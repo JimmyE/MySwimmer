@@ -28,6 +28,7 @@
 		38A2CAE717FCB29E00087FCD /* TTGMeetTVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */; };
 		38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */; };
 		38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */; };
+		38EAB2D218032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB2D118032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,9 @@
 		38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerCell.m; sourceTree = "<group>"; };
 		38A2CAF017FCB81400087FCD /* TTGSwimmerDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerDetailVC.h; sourceTree = "<group>"; };
 		38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerDetailVC.m; sourceTree = "<group>"; };
+		38EAB2D018032E99007B4D73 /* TTGSwimmerDetailDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerDetailDisplayVC.h; sourceTree = "<group>"; };
+		38EAB2D118032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerDetailDisplayVC.m; sourceTree = "<group>"; };
+		38EAB2D318033819007B4D73 /* TTGISwimmerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGISwimmerVC.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,9 @@
 				38A2CAE617FCB29E00087FCD /* TTGMeetTVCViewController.m */,
 				38A2CAF017FCB81400087FCD /* TTGSwimmerDetailVC.h */,
 				38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */,
+				38EAB2D018032E99007B4D73 /* TTGSwimmerDetailDisplayVC.h */,
+				38EAB2D118032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m */,
+				38EAB2D318033819007B4D73 /* TTGISwimmerVC.h */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -313,6 +320,7 @@
 				38A2CAE017FCB21900087FCD /* SwimmerModel.xcdatamodeld in Sources */,
 				38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */,
 				38A2CAB117FCB1ED00087FCD /* main.m in Sources */,
+				38EAB2D218032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m in Sources */,
 				38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */,
 				38198DFD17FEF94700BD3740 /* Swimmer.m in Sources */,
 			);

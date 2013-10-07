@@ -8,6 +8,7 @@
 
 #import "TTGAppDelegate.h"
 #import "TTGSwimmersTVC.h"
+#import "Swimmer.h"
 
 @implementation TTGAppDelegate
 
@@ -26,11 +27,28 @@
     UINavigationController *navController = tabBarController.viewControllers[0];
     TTGSwimmersTVC *swimmerTVC = navController.childViewControllers[0];
     swimmerTVC.managedObjectContext = context;
-    //firstVC.managedObjectContext = self.managedObjectContext;
     
+    [self loadTestData];
     return YES;
 }
-							
+
+- (void) loadTestData
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"mm-dd-yyyy";
+
+    Swimmer *swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
+    swimmer.birthDate = [dateFormatter dateFromString:@"05-29-1991"];
+    swimmer.firstName = @"Billie";
+    swimmer.lastName = @"Jo";
+    
+    Swimmer *swimmer2 = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
+    swimmer2.birthDate = [dateFormatter dateFromString:@"04-22-1996"];
+    swimmer2.firstName = @"Daisy";
+    swimmer2.lastName = @"May";
+
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

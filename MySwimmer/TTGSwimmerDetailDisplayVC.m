@@ -7,6 +7,7 @@
 //
 
 #import "TTGSwimmerDetailDisplayVC.h"
+#import "TTGSwimmerDetailVC.h"
 #import "Swimmer.h"
 #import "Swimmer+SwimmerCatgy.h"
 
@@ -34,4 +35,18 @@
     Swimmer *swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
     self.nameField.text = swimmer.fullName;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier  isEqual: @"editSwimmerSegue"])
+    {
+        TTGSwimmerDetailVC *foo = segue.destinationViewController;
+        foo.swimmerId = swimmerId;
+        foo.managedObjectContext = managedObjectContext;
+    }
+}
+
 @end

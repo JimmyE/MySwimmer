@@ -29,22 +29,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [self editButtonItem];
+
+    //self.navigationItem.rightBarButtonItem = [self editButtonItem];
+    
+    UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelButtonItem;
+    cancelButtonItem = nil;
+
     self.birthDateField.maximumDate = [NSDate date];
 
-    if (swimmerId == nil)
-    {
-        _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
-        _swimmer.birthDate = [NSDate date];
-        self.editing = YES;
-    }
-    else
-    {
-        _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
-        self.editing = NO;
-    }
+    _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+   // self.editing = YES;
 
     [self loadSwimmer];
+}
+
+- (IBAction)doneTapped:(id)sender {
+    [self save];
+    [[self navigationController] popViewControllerAnimated:YES];
+
 }
 
 - (void) save
@@ -61,7 +64,7 @@
     
     self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
 
-    self.editing = NO;
+    //self.editing = NO;
 }
 
 - (void) enterEditMode
@@ -71,14 +74,15 @@
 
 - (void) cancel
 {
-    [self loadSwimmer];
-    self.editing = NO;
-}
+    [[self navigationController] popViewControllerAnimated:YES];
 
+}
+     
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
-    
+
+    /*
     [self enableDisableFields:editing];
     
     self.navigationItem.rightBarButtonItem.action = editing ? @selector(save) : @selector(enterEditMode);
@@ -93,6 +97,7 @@
         self.navigationItem.leftBarButtonItem = cancelButtonItem;
         cancelButtonItem = nil;
     }
+     */
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -108,15 +113,19 @@
 {
     self.firstNameField.text = _swimmer.firstName;
     self.lastNameField.text = _swimmer.lastName;
-    self.birthDateField.date = _swimmer.birthDate;
-    self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
+    
+    if (_swimmer.birthDate != nil )
+    {
+        self.birthDateField.date = _swimmer.birthDate;
+        self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
+    }
 }
 
 - (void) enableDisableFields:(BOOL) enableFields
 {
     self.firstNameField.enabled = enableFields;
     self.lastNameField.enabled = enableFields;
-    
+
     self.birthDateLabel.hidden = enableFields;
     self.birthDateField.hidden = !enableFields;
 }

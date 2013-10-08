@@ -8,7 +8,9 @@
 
 #import "TTGAppDelegate.h"
 #import "TTGSwimmersTVC.h"
+#import "TTGMeetsTVC.h"
 #import "Swimmer.h"
+#import "SwimMeet.h"
 
 @implementation TTGAppDelegate
 
@@ -27,6 +29,10 @@
     UINavigationController *navController = tabBarController.viewControllers[0];
     TTGSwimmersTVC *swimmerTVC = navController.childViewControllers[0];
     swimmerTVC.managedObjectContext = context;
+
+    navController = tabBarController.viewControllers[1];
+    TTGMeetsTVC *meetsTVC = navController.childViewControllers[0];
+    meetsTVC.managedObjectContext = context;
     
     [self loadTestData];
     return YES;
@@ -48,7 +54,32 @@
     swimmer2.firstName = @"Daisy";
     swimmer2.lastName = @"May";
     swimmer2.gender = [NSNumber numberWithInt:1];  //girl
+/*
+    SwimMeet *meet1 = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
+    meet1.name = @"Tyr Open";
+    meet1.location = @"St Xavier Natorium";
+    meet1.meetType = [NSNumber numberWithInt:1];  // todo: enum
+    meet1.meetDate = [dateFormatter dateFromString:@"08-01-2013"];
+ */
+    [self createMeet:@"Tyr Classic" atLocation:@"St X Natorium" withType:1 onDate:@"08-01-2013"];
+    [self createMeet:@"Summer Classic" atLocation:@"Mason" withType:1 onDate:@"06-12-2013"];
+    [self createMeet:@"Milford Invitational" atLocation:@"Milford High School" withType:1 onDate:@"10-01-2013"];
+}
 
+-(SwimMeet*)createMeet:(NSString*)name
+            atLocation:(NSString*)location
+              withType:(NSInteger) meetType
+                onDate:(NSString*) meetDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"mm-dd-yyyy";
+
+    SwimMeet *meet1 = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
+    meet1.name = name;
+    meet1.location = location;
+    meet1.meetType = [NSNumber numberWithInt:meetType];  // todo: enum
+    meet1.meetDate = [dateFormatter dateFromString:meetDate];
+    return meet1;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

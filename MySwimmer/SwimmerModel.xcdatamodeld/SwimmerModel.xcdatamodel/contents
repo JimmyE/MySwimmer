@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SwimMeet" representedClassName="SwimMeet" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meetDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="meetType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Swimmer" representedClassName="Swimmer" syncable="YES">
         <attribute name="birthDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,5 +14,6 @@
     </entity>
     <elements>
         <element name="Swimmer" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SwimMeet" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

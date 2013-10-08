@@ -61,7 +61,7 @@
             </objects>
             <point key="canvasLocation" x="1173" y="-168"/>
         </scene>
-        <!--Swimmer DetailVC - New Swimmer-->
+        <!--Swimmer DetailVC - Swimmer-->
         <scene sceneID="w73-jb-n3J">
             <objects>
                 <viewController id="nUq-QF-CBG" customClass="TTGSwimmerDetailVC" sceneMemberID="viewController">
@@ -130,7 +130,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Swimmer" id="oRM-rp-nkQ"/>
+                    <navigationItem key="navigationItem" title="Swimmer" id="oRM-rp-nkQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PW3-mv-ea0">
+                            <connections>
+                                <action selector="doneTapped:" destination="nUq-QF-CBG" id="ysE-cy-zK4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="birthDateField" destination="gTx-y4-evr" id="Vg5-wY-qxr"/>
                         <outlet property="birthDateLabel" destination="vQ1-YE-6Mh" id="CFO-aX-nfm"/>
@@ -140,9 +146,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lno-ja-N6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061" y="-168"/>
+            <point key="canvasLocation" x="2229" y="-350"/>
         </scene>
-        <!--Swimmer Detail DisplayVC-->
+        <!--Swimmer Detail DisplayVC - Swimmer-->
         <scene sceneID="UnF-Rx-fJF">
             <objects>
                 <viewController id="xzn-TW-vem" customClass="TTGSwimmerDetailDisplayVC" sceneMemberID="viewController">
@@ -164,10 +170,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cch-Si-FpM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="2Zf-9T-pLM">
+                    <navigationItem key="navigationItem" title="Swimmer" id="k79-jx-PMQ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="QVb-gZ-KKE">
                             <connections>
-                                <segue destination="nUq-QF-CBG" kind="push" identifier="editSwimmerSegue" id="EkE-zJ-USs"/>
+                                <segue destination="nUq-QF-CBG" kind="push" identifier="editSwimmerSegue" id="gI6-Sm-eNb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,7 +183,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="543-IX-pXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="-92"/>
+            <point key="canvasLocation" x="1734" y="164"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -257,6 +263,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EkE-zJ-USs"/>
+        <segue reference="gI6-Sm-eNb"/>
     </inferredMetricsTieBreakers>
 </document>

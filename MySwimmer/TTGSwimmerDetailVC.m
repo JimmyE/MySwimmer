@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *birthDateField;
 @property (weak, nonatomic) IBOutlet UILabel *birthDateLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *genderField;
 
 @property (nonatomic, strong) Swimmer *swimmer;
 
@@ -32,23 +33,19 @@
 {
     [super viewDidLoad];
 
-    //self.navigationItem.rightBarButtonItem = [self editButtonItem];
-   // UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-   // self.navigationItem.leftBarButtonItem = cancelButtonItem;
-   // cancelButtonItem = nil;
-
     self.birthDateField.maximumDate = [NSDate date];
 
-    if (swimmerId != nil)
-    {
+    NSString *title = @"New";
+    if (swimmerId != nil) {
         _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+        [self loadSwimmer];
+        title = _swimmer.lastName;
     }
     else{
         _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     }
-   // self.editing = YES;
-
-    [self loadSwimmer];
+    
+    //self.navigationController.topViewController.title = title;  ** todo !
 }
 
 - (IBAction)doneTapped:(id)sender {
@@ -63,9 +60,20 @@
 
 - (void) save
 {
+    /*
+        * todo: remove 'new' swimmer before returning
+    if (self.firstNameField.text.length == 0 && self.lastNameField.text.length == 0)
+    {
+        NSLog(@"No name!, skip save and close");
+        return;
+    }
+     */
+    
     NSLog(@"Save swimmer");
+    
     _swimmer.firstName = self.firstNameField.text;
     _swimmer.lastName = self.lastNameField.text;
+    _swimmer.gender = [NSNumber numberWithInt: [self.genderField selectedSegmentIndex]];
     
     // strip 'time' component from date field
     unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
@@ -74,6 +82,7 @@
     _swimmer.birthDate = [calendar dateFromComponents:components];
     
     self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
+    
 
     //self.editing = NO;
 }
@@ -108,6 +117,7 @@
 //    self.navigationItem.
     self.firstNameField.text = _swimmer.firstName;
     self.lastNameField.text = _swimmer.lastName;
+    self.genderField.selectedSegmentIndex = [_swimmer.gender  integerValue];
     
     if (_swimmer.birthDate != nil )
     {

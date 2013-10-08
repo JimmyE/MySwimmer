@@ -13,4 +13,5 @@
 - (NSString*) fullName;
 - (NSInteger) age;
 - (NSString*) birthDateMMDDYYY;
+- (NSString*) boyOrGirl;
 @end

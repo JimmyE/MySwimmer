@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		38198DFD17FEF94700BD3740 /* Swimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38198DFC17FEF94700BD3740 /* Swimmer.m */; };
 		38198E0017FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */; };
+		382EC10018046D8600CECBC6 /* man-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 382EC0FE18046D8600CECBC6 /* man-user.png */; };
+		382EC10118046D8600CECBC6 /* woman-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 382EC0FF18046D8600CECBC6 /* woman-user.png */; };
 		38A2CAA517FCB1ED00087FCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA417FCB1ED00087FCD /* Foundation.framework */; };
 		38A2CAA717FCB1ED00087FCD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */; };
 		38A2CAA917FCB1ED00087FCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA817FCB1ED00087FCD /* UIKit.framework */; };
@@ -46,6 +48,8 @@
 		38198DFC17FEF94700BD3740 /* Swimmer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmer.m; sourceTree = "<group>"; };
 		38198DFE17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swimmer+SwimmerCatgy.h"; sourceTree = "<group>"; };
 		38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Swimmer+SwimmerCatgy.m"; sourceTree = "<group>"; };
+		382EC0FE18046D8600CECBC6 /* man-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "man-user.png"; sourceTree = "<group>"; };
+		382EC0FF18046D8600CECBC6 /* woman-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woman-user.png"; sourceTree = "<group>"; };
 		38A2CAA117FCB1ED00087FCD /* MySwimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A2CAA417FCB1ED00087FCD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,6 +107,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		382EC10218046D8C00CECBC6 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				382EC0FE18046D8600CECBC6 /* man-user.png */,
+				382EC0FF18046D8600CECBC6 /* woman-user.png */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		38A2CA9817FCB1ED00087FCD = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +150,7 @@
 		38A2CAAA17FCB1ED00087FCD /* MySwimmer */ = {
 			isa = PBXGroup;
 			children = (
+				382EC10218046D8C00CECBC6 /* resources */,
 				38A2CAEC17FCB4A100087FCD /* model */,
 				38A2CAE817FCB3C500087FCD /* views */,
 				38A2CAE117FCB24700087FCD /* controllers */,
@@ -295,6 +309,8 @@
 				38A2CAC017FCB1ED00087FCD /* Images.xcassets in Resources */,
 				38A2CAAF17FCB1ED00087FCD /* InfoPlist.strings in Resources */,
 				38A2CAB817FCB1ED00087FCD /* Main.storyboard in Resources */,
+				382EC10118046D8600CECBC6 /* woman-user.png in Resources */,
+				382EC10018046D8600CECBC6 /* man-user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,11 +41,13 @@
     swimmer.birthDate = [dateFormatter dateFromString:@"05-29-1991"];
     swimmer.firstName = @"Billie";
     swimmer.lastName = @"Jo";
+    swimmer.gender = [NSNumber numberWithInt:1];  //girl
     
     Swimmer *swimmer2 = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     swimmer2.birthDate = [dateFormatter dateFromString:@"04-22-1996"];
     swimmer2.firstName = @"Daisy";
     swimmer2.lastName = @"May";
+    swimmer2.gender = [NSNumber numberWithInt:1];  //girl
 
 }
 

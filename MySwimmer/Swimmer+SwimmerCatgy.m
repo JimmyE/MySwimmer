@@ -34,4 +34,9 @@
     return [dateFormatter stringFromDate:self.birthDate];
 }
 
+- (NSString*) boyOrGirl
+{
+    return [self.gender integerValue] == 0 ? @"boy" : @"girl";
+}
+
 @end

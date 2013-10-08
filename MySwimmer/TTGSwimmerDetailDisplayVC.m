@@ -13,6 +13,8 @@
 
 @interface TTGSwimmerDetailDisplayVC ()
 @property (weak, nonatomic) IBOutlet UILabel *nameField;
+@property (weak, nonatomic) IBOutlet UILabel *birthdayField;
+@property (weak, nonatomic) IBOutlet UILabel *genderField;
 
 @end
 
@@ -42,6 +44,8 @@
 {
     Swimmer *swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
     self.nameField.text = swimmer.fullName;
+    self.genderField.text = swimmer.boyOrGirl;
+    self.birthdayField.text = [NSString stringWithFormat:@"%@  (%d)", swimmer.birthDateMMDDYYY, swimmer.age];
 }
 
 - (IBAction)editSwimmerTapped:(id)sender {

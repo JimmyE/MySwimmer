@@ -160,9 +160,10 @@
         id<TTGISwimmerVC> foo = segue.destinationViewController;
 //        TTGSwimmerDetailVC *foo = segue.destinationViewController;
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        foo.swimmerId = indexPath == nil ? 0 : [[_fetchedResultsController objectAtIndexPath:indexPath] objectID];
+        foo.swimmerId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
         foo.managedObjectContext = managedObjectContext;
     }
+    
     /*
     if ([segue.identifier isEqual:@"addSwimmerSegue"])
     {

@@ -28,14 +28,14 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     if (swimmerId != nil)
     {
         [self loadSwimmerView];
     }
     
-    self.editing = NO;
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   // self.editing = NO;
 }
 
 - (void) loadSwimmerView
@@ -44,16 +44,13 @@
     self.nameField.text = swimmer.fullName;
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+- (IBAction)editSwimmerTapped:(id)sender {
+    [self editSwimmer];
+}
+
+- (void) editSwimmer
 {
-    //[super setEditing:editing animated:animated];
-    // View-only page- don't trigger 'edit' mode
-    
-    if (editing)
-    {
-        [self performSegueWithIdentifier:@"editSwimmerSegue" sender:self];
-    }
-    
+    [self performSegueWithIdentifier:@"editSwimmerSegue" sender:self];    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

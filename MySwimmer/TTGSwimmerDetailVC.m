@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 TangoTiger. All rights reserved.
 //
 
+// "EDIT" swimmer details view controller
+
 #import "TTGSwimmerDetailVC.h"
 #import "Swimmer+SwimmerCatgy.h"
 
@@ -31,14 +33,19 @@
     [super viewDidLoad];
 
     //self.navigationItem.rightBarButtonItem = [self editButtonItem];
-    
-    UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelButtonItem;
-    cancelButtonItem = nil;
+   // UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+   // self.navigationItem.leftBarButtonItem = cancelButtonItem;
+   // cancelButtonItem = nil;
 
     self.birthDateField.maximumDate = [NSDate date];
 
-    _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+    if (swimmerId != nil)
+    {
+        _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+    }
+    else{
+        _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
+    }
    // self.editing = YES;
 
     [self loadSwimmer];
@@ -46,8 +53,12 @@
 
 - (IBAction)doneTapped:(id)sender {
     [self save];
-    [[self navigationController] popViewControllerAnimated:YES];
+//    [[self navigationController] popViewControllerAnimated:YES];
+    [self closePopup];
+}
 
+- (IBAction)cancelTapped:(id)sender {
+    [self closePopup];
 }
 
 - (void) save
@@ -72,32 +83,15 @@
     [self setEditing:YES animated:YES];
 }
 
-- (void) cancel
+- (void) closePopup
 {
-    [[self navigationController] popViewControllerAnimated:YES];
-
+    //[[self navigationController] popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
-     
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
-
-    /*
-    [self enableDisableFields:editing];
-    
-    self.navigationItem.rightBarButtonItem.action = editing ? @selector(save) : @selector(enterEditMode);
-    
-    if (!editing)
-    {
-        self.navigationItem.leftBarButtonItem = nil;
-    }
-    else
-    {
-        UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-        self.navigationItem.leftBarButtonItem = cancelButtonItem;
-        cancelButtonItem = nil;
-    }
-     */
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -111,6 +105,7 @@
 
 - (void) loadSwimmer
 {
+//    self.navigationItem.
     self.firstNameField.text = _swimmer.firstName;
     self.lastNameField.text = _swimmer.lastName;
     

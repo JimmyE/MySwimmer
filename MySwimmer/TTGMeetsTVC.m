@@ -9,6 +9,8 @@
 #import "TTGMeetsTVC.h"
 #import "TTGMeetCell.h"
 #import "SwimMeet.h"
+#import "TTGISwimmerVC.h"
+
 
 @interface TTGMeetsTVC ()
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
@@ -114,16 +116,19 @@
     
 }
 
-/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"meetInfoSegue"])
+    {
+        id<TTGISwimmerVC> foo = segue.destinationViewController;
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        foo.swimmerId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
+        foo.managedObjectContext = managedObjectContext;
+    }
 }
 
- */
 
 @end

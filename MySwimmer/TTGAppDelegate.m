@@ -109,8 +109,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
-
 #pragma mark - Core Data stack
 
 // Returns the managed object context for the application.

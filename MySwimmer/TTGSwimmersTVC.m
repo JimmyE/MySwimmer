@@ -158,38 +158,10 @@
 //    if ([segue.identifier  isEqual: @"swimmerDetailSegue"] )
     {
         id<TTGISwimmerVC> foo = segue.destinationViewController;
-//        TTGSwimmerDetailVC *foo = segue.destinationViewController;
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         foo.swimmerId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
         foo.managedObjectContext = managedObjectContext;
     }
-    
-    /*
-    if ([segue.identifier isEqual:@"addSwimmerSegue"])
-    {
-        TTGSwimmerDetailDisplayVC *foo = segue.destinationViewController;
-        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        foo.swimmerId = nil;  //'add' operation
-        foo.managedObjectContext = managedObjectContext;
-    }
-     */
-    
-    
-        /*
-    {
-        TTGSwimmerDetailDisplayVC *detailViewController = segue.destinationViewController;
-        detailViewController.managedObjectContext = managedObjectContext;
-        if (indexPath == nil )
-        {
-            detailViewController.swimmerId = 0;
-        }
-        else
-        {
-            Swimmer *info = [_fetchedResultsController objectAtIndexPath:indexPath];
-            detailViewController.swimmerId = info.objectID;
-        }
-    }
-         */
 }
 
 

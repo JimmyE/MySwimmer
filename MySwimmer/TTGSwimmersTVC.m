@@ -144,7 +144,6 @@
 #pragma mark - Navigation
 
 - (IBAction)addNewSwimmer:(id)sender {
-    // todo: pass flag/data for new swimmer
     [self performSegueWithIdentifier:@"swimmerDetailSegue" sender:self];
 }
 

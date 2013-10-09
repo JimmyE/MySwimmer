@@ -17,6 +17,7 @@
 		382EC1171804938900CECBC6 /* TTGMeetEventsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 382EC1161804938900CECBC6 /* TTGMeetEventsTVC.m */; };
 		382EC11A1804971A00CECBC6 /* TTGMeetInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 382EC1191804971A00CECBC6 /* TTGMeetInfoCell.m */; };
 		382EC11D18049AA400CECBC6 /* TTGMeetEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 382EC11C18049AA400CECBC6 /* TTGMeetEventCell.m */; };
+		38727D3C18059D4D006F15F9 /* TTGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38727D3B18059D4D006F15F9 /* TTGHelper.m */; };
 		38A2CAA517FCB1ED00087FCD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA417FCB1ED00087FCD /* Foundation.framework */; };
 		38A2CAA717FCB1ED00087FCD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */; };
 		38A2CAA917FCB1ED00087FCD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A2CAA817FCB1ED00087FCD /* UIKit.framework */; };
@@ -67,6 +68,8 @@
 		382EC1191804971A00CECBC6 /* TTGMeetInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGMeetInfoCell.m; sourceTree = "<group>"; };
 		382EC11B18049AA400CECBC6 /* TTGMeetEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGMeetEventCell.h; sourceTree = "<group>"; };
 		382EC11C18049AA400CECBC6 /* TTGMeetEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGMeetEventCell.m; sourceTree = "<group>"; };
+		38727D3A18059D4D006F15F9 /* TTGHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGHelper.h; sourceTree = "<group>"; };
+		38727D3B18059D4D006F15F9 /* TTGHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGHelper.m; sourceTree = "<group>"; };
 		38A2CAA117FCB1ED00087FCD /* MySwimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySwimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A2CAA417FCB1ED00087FCD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		38A2CAA617FCB1ED00087FCD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -250,6 +253,8 @@
 				38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */,
 				382EC10F18048BB000CECBC6 /* SwimMeet.h */,
 				382EC11018048BB000CECBC6 /* SwimMeet.m */,
+				38727D3A18059D4D006F15F9 /* TTGHelper.h */,
+				38727D3B18059D4D006F15F9 /* TTGHelper.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				38198E0017FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m in Sources */,
 				382EC11418048F0500CECBC6 /* TTGMeetCell.m in Sources */,
 				38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */,
+				38727D3C18059D4D006F15F9 /* TTGHelper.m in Sources */,
 				38A2CAE017FCB21900087FCD /* SwimmerModel.xcdatamodeld in Sources */,
 				382EC11D18049AA400CECBC6 /* TTGMeetEventCell.m in Sources */,
 				382EC1171804938900CECBC6 /* TTGMeetEventsTVC.m in Sources */,

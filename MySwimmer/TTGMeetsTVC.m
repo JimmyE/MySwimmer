@@ -10,7 +10,7 @@
 #import "TTGMeetCell.h"
 #import "SwimMeet.h"
 #import "TTGISwimmerVC.h"
-
+#import "TTGHelper.h"
 
 @interface TTGMeetsTVC ()
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
@@ -45,6 +45,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - UI actions/events
+- (IBAction)addMeetTapped:(id)sender {
+    [self performSegueWithIdentifier:@"meetInfoSegue" sender:self];
+}
 
 #pragma mark - Table view data source
 
@@ -70,7 +74,7 @@
     SwimMeet *info = [_fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.nameField.text = info.name;
-    cell.dateField.text = [info.meetDate description];
+    cell.dateField.text = [TTGHelper formatDateMMDDYYYY:info.meetDate];
     return cell;
 }
 

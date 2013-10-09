@@ -41,13 +41,13 @@
 - (void) loadTestData
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"mm-dd-yyyy";
+    dateFormatter.dateFormat = @"MM-dd-yyyy";
 
     Swimmer *swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     swimmer.birthDate = [dateFormatter dateFromString:@"05-29-1991"];
-    swimmer.firstName = @"Billie";
-    swimmer.lastName = @"Jo";
-    swimmer.gender = [NSNumber numberWithInt:1];  //girl
+    swimmer.firstName = @"Bubby";
+    swimmer.lastName = @"Jones";
+    swimmer.gender = [NSNumber numberWithInt:0];  //boy
     
     Swimmer *swimmer2 = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     swimmer2.birthDate = [dateFormatter dateFromString:@"04-22-1996"];
@@ -72,7 +72,7 @@
                 onDate:(NSString*) meetDate
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"mm-dd-yyyy";
+    dateFormatter.dateFormat = @"MM-dd-yyyy";
 
     SwimMeet *meet1 = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
     meet1.name = name;

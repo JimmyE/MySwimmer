@@ -10,10 +10,11 @@
 #import "TTGMeetInfoCell.h"
 #import "TTGMeetEventCell.h"
 #import "SwimMeet.h"
+#import "TTGHelper.h"
 
 @interface TTGMeetEventsTVC ()
-//@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) SwimMeet *swimMeet;
+@property (nonatomic) BOOL newSwimmer;
 @end
 
 @implementation TTGMeetEventsTVC
@@ -25,8 +26,18 @@
 {
     [super viewDidLoad];
     
-    _swimMeet = (SwimMeet*) [managedObjectContext objectRegisteredForID:swimmerId];
-    NSString *foo = [self formatDateMMDDYYYY:[NSDate date]];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    if (swimmerId != nil ){
+        _swimMeet = (SwimMeet*) [managedObjectContext objectRegisteredForID:swimmerId];
+        self.newSwimmer = NO;
+    }
+    else {
+        _swimMeet = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
+        _swimMeet.meetDate = [NSDate date];
+        self.newSwimmer = YES;
+        self.editing = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +61,7 @@
         return 1;
     }
     
-    return 3;  // **TEMP ****
+    return  self.newSwimmer ? 0 : 3;  // TEMP ***
 //    return 0;
 }
 
@@ -60,18 +71,8 @@
     return 44;
 }
 
-- (NSString*) formatDateMMDDYYYY:(NSDate*)fromDate
-{
-    //todo: move to 'utils' class
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM-dd-yyyy"];
-    return [dateFormatter stringFromDate:fromDate];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *foo = [self formatDateMMDDYYYY:_swimMeet.meetDate];
-
     if (indexPath.section == 0)
     {
         // Header cell
@@ -81,7 +82,11 @@
         
         cell.meetInfoName.text = _swimMeet.name;
         cell.meetLocationField.text = [NSString stringWithFormat:@"@%@", _swimMeet.location];
-        cell.meetDateField.text = [self formatDateMMDDYYYY:_swimMeet.meetDate];
+        cell.meetDateField.text = [TTGHelper formatDateMMDDYYYY:_swimMeet.meetDate];
+        
+        cell.meetInfoName.enabled = NO;
+        cell.meetDateField.enabled = NO;
+        cell.meetLocationField.enabled = NO;
         return cell;
     }
     else
@@ -89,20 +94,67 @@
         static NSString *CellIdentifier = @"meetEventCell";
         TTGMeetEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
+        //todo: use db
         if (indexPath.row == 0) {
-            cell.eventDescField.text = @"Boys 50 Fly";
+            cell.eventDescField.text = @"#10 Boys 50 Fly";
         }
         else if (indexPath.row == 1) {
-            cell.eventDescField.text = @"Boys 200 Free";
+            cell.eventDescField.text = @"#30 Boys 200 Free";
         }
         else {
-            cell.eventDescField.text = @"Girls 50 Fly";
+            cell.eventDescField.text = @"#23 Girls 50 Fly";
         }
         return cell;
     }
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate
+{
+    [super setEditing:editing animated:animate];
+    NSLog(@"editing: %d", editing);
+    
+    if (!editing) {
+        [self saveMeetInfo];
+    }
+    
+    [self enableDisableMeetInfoFields:editing];
+}
 
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath  {
+    return indexPath.section == 0 ? NO : YES;
+}
+
+- (TTGMeetInfoCell*) getMeetInfoCell {
+    TTGMeetInfoCell *meetCell = (TTGMeetInfoCell*) [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] ];
+
+    return meetCell;
+}
+
+- (void) enableDisableMeetInfoFields:(BOOL)editing {
+
+    TTGMeetInfoCell * meetCell = [self getMeetInfoCell];
+    meetCell.meetInfoName.enabled = editing;
+    meetCell.meetLocationField.enabled = editing;
+    if (editing)    {
+        meetCell.meetLocationField.text = _swimMeet.location; //reset field, remove '@'
+    }
+    
+    meetCell.meetInfoName.borderStyle = editing ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
+    meetCell.meetLocationField.borderStyle = editing ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void) saveMeetInfo {
+    TTGMeetInfoCell * meetCell = [self getMeetInfoCell];
+    _swimMeet.name = meetCell.meetInfoName.text;
+    _swimMeet.location = meetCell.meetLocationField.text;  // TODO * trim leading/trailing white space
+}
 
 /*
 #pragma mark - Navigation

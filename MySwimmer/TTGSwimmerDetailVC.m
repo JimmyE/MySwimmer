@@ -44,13 +44,10 @@
     else{
         _swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
     }
-    
-    //self.navigationController.topViewController.title = title;  ** todo !
 }
 
 - (IBAction)doneTapped:(id)sender {
     [self save];
-//    [[self navigationController] popViewControllerAnimated:YES];
     [self closePopup];
 }
 
@@ -82,14 +79,6 @@
     _swimmer.birthDate = [calendar dateFromComponents:components];
     
     self.birthDateLabel.text = _swimmer.birthDateMMDDYYY;
-    
-
-    //self.editing = NO;
-}
-
-- (void) enterEditMode
-{
-    [self setEditing:YES animated:YES];
 }
 
 - (void) closePopup
@@ -98,18 +87,10 @@
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
-    [super setEditing:editing animated:animated];
-}
-
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
-}
-
-- (IBAction)textFieldDidEndEditing:(UITextField*)textField    {
 }
 
 - (void) loadSwimmer

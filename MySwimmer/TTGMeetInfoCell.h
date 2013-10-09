@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TTGMeetInfoCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *meetLocationField;
-@property (weak, nonatomic) IBOutlet UILabel *meetDateField;
-@property (weak, nonatomic) IBOutlet UILabel *meetInfoName;
+@property (weak, nonatomic) IBOutlet UITextField *meetInfoName;
+@property (weak, nonatomic) IBOutlet UITextField *meetLocationField;
+@property (weak, nonatomic) IBOutlet UITextField *meetDateField;
 
 @end

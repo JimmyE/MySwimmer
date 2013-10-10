@@ -14,7 +14,7 @@
 
 @interface TTGMeetEventsTVC ()
 @property (nonatomic, strong) SwimMeet *swimMeet;
-@property (nonatomic, strong) NSArray *eventList;
+@property (nonatomic, strong) NSMutableArray *eventList;
 @property (nonatomic) BOOL newSwimmer;
 
 @end
@@ -23,6 +23,8 @@
 
 @synthesize managedObjectContext;
 @synthesize swimmerId;
+
+const int MemberInfoSectionId = 0;
 
 - (void)viewDidLoad
 {
@@ -41,13 +43,12 @@
         self.editing = YES;
     }
 
-    _eventList = [_swimMeet.hasEvents allObjects];  // todo: sort array
+    _eventList = [NSMutableArray arrayWithArray:[_swimMeet.hasEvents allObjects]];  // todo: sort array by event number
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -59,21 +60,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // section: 0 is the 'info' section
-    return section == 0 ? 1 : [_eventList count];
+    int addRow = self.tableView.isEditing ? 1 : 0; //when editing, need a row for the "Add event" cell
+    int result = section == MemberInfoSectionId ? 1 : [_eventList count] + addRow;
+    return result;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0)
+    if (indexPath.section == MemberInfoSectionId)
         return 120;  //todo
     return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == MemberInfoSectionId)
     {
-        // Header cell
         static NSString *CellIdentifier = @"meetInfoCell";
         TTGMeetInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
@@ -89,43 +90,53 @@
         cell.meetType.enabled = NO;
         return cell;
     }
+    else if (indexPath.row == self.swimMeet.hasEvents.count)
+    {
+        static NSString *CellIdentifier = @"addEventCell";
+        return [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    }
     else
     {
         static NSString *CellIdentifier = @"meetEventCell";
         TTGMeetEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         MeetEvent *event = [_eventList objectAtIndex:indexPath.row];
         cell.eventDescField.text = [NSString stringWithFormat:@"%@", event.EventDescription];
-        /*
-        //todo: use db
-        if (indexPath.row == 0) {
-            cell.eventDescField.text = @"#10 Boys 50 Fly";
-        }
-        else if (indexPath.row == 1) {
-            cell.eventDescField.text = @"#30 Boys 200 Free";
-        }
-        else {
-            cell.eventDescField.text = @"#23 Girls 50 Fly";
-        }
-         */
         return cell;
     }
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animate
-{
-    [super setEditing:editing animated:animate];
-    NSLog(@"editing: %d", editing);
-    
-    if (!editing) {
-        [self saveMeetInfo];
-    }
-    
-    [self enableDisableMeetInfoFields:editing];
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath  {
+    return indexPath.section == MemberInfoSectionId ? NO : YES;
+}
+
+-  (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return (indexPath.row == self.swimMeet.hasEvents.count) ? UITableViewCellEditingStyleInsert : UITableViewCellEditingStyleDelete;
+
 }
 
 
-- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath  {
-    return indexPath.section == 0 ? NO : YES;
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate
+{
+    [super setEditing:editing animated:animate];
+    [self.tableView setEditing:editing animated:animate];
+
+    //todo: make section a constant
+    NSArray *paths = [NSArray arrayWithObject:
+                      [NSIndexPath indexPathForRow:(self.eventList.count) inSection:1]];
+    
+    if (!editing) {
+        [self saveMeetInfo];
+
+        [[self tableView] deleteRowsAtIndexPaths:paths
+                                withRowAnimation:UITableViewRowAnimationTop];
+    } else {
+        //[_eventList addObject:[[MeetEvent alloc]init]];
+        [self.tableView beginUpdates];
+        [[self tableView] insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+    }
+    
+    [self enableDisableMeetInfoFields:editing];
 }
 
 - (TTGMeetInfoCell*) getMeetInfoCell {

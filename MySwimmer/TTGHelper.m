@@ -18,4 +18,26 @@
     return [dateFormatter stringFromDate:fromDate];
 }
 
++ (NSString*) GenderDescription:(TTGGenderType)genderType
+{
+    return genderType == Boy ? @"Boy" : @"Girl";
+}
+
++ (NSString*) StrokeDescription:(TTGStrokeType)strokeType
+{
+    switch (strokeType) {
+        case Free:
+            return @"Free";
+        case Back:
+            return @"Back";
+        case Breast:
+            return @"Breast";
+        case Fly:
+            return @"Fly";
+        default:
+            break;
+    }
+    
+    return @"";
+}
 @end

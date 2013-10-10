@@ -14,7 +14,6 @@
 
 @interface TTGMeetsTVC ()
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-
 @end
 
 @implementation TTGMeetsTVC

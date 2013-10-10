@@ -2,18 +2,20 @@
 //  SwimMeet.m
 //  MySwimmer
 //
-//  Created by Jim on 10/8/13.
+//  Created by Jim on 10/9/13.
 //  Copyright (c) 2013 TangoTiger. All rights reserved.
 //
 
 #import "SwimMeet.h"
+#import "MeetEvent.h"
 
 
 @implementation SwimMeet
 
-@dynamic name;
-@dynamic meetType;
-@dynamic meetDate;
 @dynamic location;
+@dynamic meetDate;
+@dynamic meetType;
+@dynamic name;
+@dynamic hasEvents;
 
 @end

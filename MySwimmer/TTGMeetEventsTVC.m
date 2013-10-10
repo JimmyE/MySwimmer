@@ -14,7 +14,9 @@
 
 @interface TTGMeetEventsTVC ()
 @property (nonatomic, strong) SwimMeet *swimMeet;
+@property (nonatomic, strong) NSArray *eventList;
 @property (nonatomic) BOOL newSwimmer;
+
 @end
 
 @implementation TTGMeetEventsTVC
@@ -38,6 +40,8 @@
         self.newSwimmer = YES;
         self.editing = YES;
     }
+
+    _eventList = [_swimMeet.hasEvents allObjects];  // todo: sort array
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,21 +57,15 @@
     return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-    {
-        return 1;
-    }
-    
-    return  self.newSwimmer ? 0 : 3;  // TEMP ***
-//    return 0;
+    // section: 0 is the 'info' section
+    return section == 0 ? 1 : [_eventList count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0)
-        return 120;
+        return 120;  //todo
     return 44;
 }
 
@@ -95,7 +93,9 @@
     {
         static NSString *CellIdentifier = @"meetEventCell";
         TTGMeetEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
+        MeetEvent *event = [_eventList objectAtIndex:indexPath.row];
+        cell.eventDescField.text = [NSString stringWithFormat:@"%@", event.EventDescription];
+        /*
         //todo: use db
         if (indexPath.row == 0) {
             cell.eventDescField.text = @"#10 Boys 50 Fly";
@@ -106,6 +106,7 @@
         else {
             cell.eventDescField.text = @"#23 Girls 50 Fly";
         }
+         */
         return cell;
     }
 }

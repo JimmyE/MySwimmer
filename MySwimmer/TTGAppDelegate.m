@@ -9,8 +9,6 @@
 #import "TTGAppDelegate.h"
 #import "TTGSwimmersTVC.h"
 #import "TTGMeetsTVC.h"
-#import "Swimmer.h"
-#import "SwimMeet.h"
 
 @implementation TTGAppDelegate
 
@@ -34,7 +32,7 @@
     TTGMeetsTVC *meetsTVC = navController.childViewControllers[0];
     meetsTVC.managedObjectContext = context;
     
-    [self loadTestData];
+    [self loadTestData];  // TEMP ***
     return YES;
 }
 
@@ -54,16 +52,17 @@
     swimmer2.firstName = @"Daisy";
     swimmer2.lastName = @"May";
     swimmer2.gender = [NSNumber numberWithInt:1];  //girl
-/*
-    SwimMeet *meet1 = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
-    meet1.name = @"Tyr Open";
-    meet1.location = @"St Xavier Natorium";
-    meet1.meetType = [NSNumber numberWithInt:1];  // todo: enum
-    meet1.meetDate = [dateFormatter dateFromString:@"08-01-2013"];
- */
-    [self createMeet:@"Tyr Classic" atLocation:@"St X Natorium" withType:0 onDate:@"08-01-2013"];
-    [self createMeet:@"Summer Classic" atLocation:@"Mason" withType:1 onDate:@"06-12-2013"];
+
+    SwimMeet *meet1 = [self createMeet:@"Tyr Classic" atLocation:@"St X Natorium" withType:0 onDate:@"08-01-2013"];
+    SwimMeet *meet2 =[self createMeet:@"Summer Classic" atLocation:@"Mason" withType:1 onDate:@"06-12-2013"];
     [self createMeet:@"Milford Invitational" atLocation:@"Milford High School" withType:2 onDate:@"10-01-2013"];
+    
+    [meet1 addHasEventsObject:[self createEvent:20 forMeet:meet1 forStroke:Free forDistance:100 forAgeLimit:12 forGender:Boy]];
+    [meet1 addHasEventsObject:[self createEvent:26 forMeet:meet1 forStroke:Fly forDistance:50 forAgeLimit:12 forGender:Boy]];
+    [meet1 addHasEventsObject:[self createEvent:36 forMeet:meet1 forStroke:Breast forDistance:50 forAgeLimit:12 forGender:Boy]];
+    [meet1 addHasEventsObject:[self createEvent:46 forMeet:meet1 forStroke:Back forDistance:50 forAgeLimit:12 forGender:Boy]];
+    
+    [meet2 addHasEventsObject:[self createEvent:2 forMeet:meet1 forStroke:Free forDistance:50 forAgeLimit:12 forGender:Boy]];
 }
 
 -(SwimMeet*)createMeet:(NSString*)name
@@ -79,7 +78,29 @@
     meet1.location = location;
     meet1.meetType = [NSNumber numberWithInt:meetType];  // todo: enum
     meet1.meetDate = [dateFormatter dateFromString:meetDate];
+
     return meet1;
+}
+
+- (MeetEvent*) createEvent:(NSInteger)eventNbr
+                   forMeet:(SwimMeet*) forMeet
+                 forStroke:(TTGStrokeType) strokeType
+               forDistance:(NSInteger)distance
+               forAgeLimit:(NSInteger)maxAge
+                 forGender:(TTGGenderType)gender
+{
+    MeetEvent *event = [NSEntityDescription insertNewObjectForEntityForName:@"MeetEvent" inManagedObjectContext:self.managedObjectContext];
+
+    event.number = [NSNumber numberWithInt:eventNbr];
+    event.strokeType = [NSNumber numberWithInt:strokeType];
+    event.forMeet = forMeet;
+    event.isRelay = NO;
+    event.isOpen = NO;
+    event.distance = [NSNumber numberWithInteger:distance];
+    event.maxAge = [NSNumber numberWithInteger:maxAge];
+    event.gender = [NSNumber numberWithInteger:gender];
+    
+    return event;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

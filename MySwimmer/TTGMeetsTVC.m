@@ -73,8 +73,23 @@
     // Configure the cell...
     SwimMeet *info = [_fetchedResultsController objectAtIndexPath:indexPath];
     
+    NSString *meetType = @"";
     cell.nameField.text = info.name;
     cell.dateField.text = [TTGHelper formatDateMMDDYYYY:info.meetDate];
+    switch (info.meetType.integerValue) {
+        case 0:
+            meetType = @"SCM";
+            break;
+        case 1:
+            meetType = @"LCM";
+            break;
+        case 2:
+            meetType = @"SCY";
+            break;
+        default:
+            break;
+    }
+    cell.meetType.text = meetType;
     return cell;
 }
 

@@ -245,15 +245,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meetInfoCell" rowHeight="84" id="ajT-Jo-pEs" customClass="TTGMeetInfoCell">
-                                <rect key="frame" x="0.0" y="119" width="320" height="84"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meetInfoCell" rowHeight="119" id="ajT-Jo-pEs" customClass="TTGMeetInfoCell">
+                                <rect key="frame" x="0.0" y="119" width="320" height="119"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajT-Jo-pEs" id="rhC-HS-bTY">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuH-G0-Aib">
-                                            <rect key="frame" x="20" y="11" width="280" height="30"/>
+                                            <rect key="frame" x="20" y="6" width="280" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -278,16 +278,26 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="puO-qZ-22S">
+                                            <rect key="frame" x="20" y="77" width="123" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="SCM"/>
+                                                <segment title="LCM"/>
+                                                <segment title="SCY"/>
+                                            </segments>
+                                        </segmentedControl>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="meetDateField" destination="LqX-r5-42a" id="fmp-KJ-QOr"/>
                                     <outlet property="meetInfoName" destination="tuH-G0-Aib" id="Mns-7l-oTs"/>
                                     <outlet property="meetLocationField" destination="FbN-Gj-Ryz" id="Xqf-6o-Hbe"/>
+                                    <outlet property="meetType" destination="puO-qZ-22S" id="jhJ-ip-9gg"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meetEventCell" id="AwE-zq-2GK" customClass="TTGMeetEventCell">
-                                <rect key="frame" x="0.0" y="203" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="238" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AwE-zq-2GK" id="iAC-ez-E9t">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -359,16 +369,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOk-8Q-H0k">
-                                            <rect key="frame" x="42" y="22" width="258" height="21"/>
+                                            <rect key="frame" x="20" y="20" width="196" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWs-sl-Brg">
+                                            <rect key="frame" x="225" y="20" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateField" destination="YOk-8Q-H0k" id="mn0-Qu-Shv"/>
+                                    <outlet property="meetType" destination="pWs-sl-Brg" id="kNg-vI-6Hn"/>
                                     <outlet property="nameField" destination="UTw-Da-FjW" id="W8g-14-Mlj"/>
                                     <segue destination="N6e-QO-QCW" kind="push" identifier="meetInfoSegue" id="Ye3-be-aSU"/>
                                 </connections>

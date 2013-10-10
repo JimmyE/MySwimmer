@@ -11,5 +11,6 @@
 @interface TTGMeetCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *dateField;
+@property (weak, nonatomic) IBOutlet UILabel *meetType;
 
 @end

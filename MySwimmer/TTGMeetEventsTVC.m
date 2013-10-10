@@ -67,7 +67,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0)
-        return 80;
+        return 120;
     return 44;
 }
 
@@ -83,10 +83,12 @@
         cell.meetInfoName.text = _swimMeet.name;
         cell.meetLocationField.text = [NSString stringWithFormat:@"@%@", _swimMeet.location];
         cell.meetDateField.text = [TTGHelper formatDateMMDDYYYY:_swimMeet.meetDate];
+        cell.meetType.selectedSegmentIndex = [_swimMeet.meetType integerValue];
         
         cell.meetInfoName.enabled = NO;
         cell.meetDateField.enabled = NO;
         cell.meetLocationField.enabled = NO;
+        cell.meetType.enabled = NO;
         return cell;
     }
     else
@@ -136,6 +138,7 @@
     TTGMeetInfoCell * meetCell = [self getMeetInfoCell];
     meetCell.meetInfoName.enabled = editing;
     meetCell.meetLocationField.enabled = editing;
+    meetCell.meetType.enabled = editing;
     if (editing)    {
         meetCell.meetLocationField.text = _swimMeet.location; //reset field, remove '@'
     }
@@ -154,6 +157,7 @@
     TTGMeetInfoCell * meetCell = [self getMeetInfoCell];
     _swimMeet.name = meetCell.meetInfoName.text;
     _swimMeet.location = meetCell.meetLocationField.text;  // TODO * trim leading/trailing white space
+    _swimMeet.meetType = [NSNumber numberWithInt:meetCell.meetType.selectedSegmentIndex];
 }
 
 /*

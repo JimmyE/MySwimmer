@@ -61,9 +61,9 @@
     meet1.meetType = [NSNumber numberWithInt:1];  // todo: enum
     meet1.meetDate = [dateFormatter dateFromString:@"08-01-2013"];
  */
-    [self createMeet:@"Tyr Classic" atLocation:@"St X Natorium" withType:1 onDate:@"08-01-2013"];
+    [self createMeet:@"Tyr Classic" atLocation:@"St X Natorium" withType:0 onDate:@"08-01-2013"];
     [self createMeet:@"Summer Classic" atLocation:@"Mason" withType:1 onDate:@"06-12-2013"];
-    [self createMeet:@"Milford Invitational" atLocation:@"Milford High School" withType:1 onDate:@"10-01-2013"];
+    [self createMeet:@"Milford Invitational" atLocation:@"Milford High School" withType:2 onDate:@"10-01-2013"];
 }
 
 -(SwimMeet*)createMeet:(NSString*)name

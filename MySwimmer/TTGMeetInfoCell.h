@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *meetInfoName;
 @property (weak, nonatomic) IBOutlet UITextField *meetLocationField;
 @property (weak, nonatomic) IBOutlet UITextField *meetDateField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *meetType;
 
 @end

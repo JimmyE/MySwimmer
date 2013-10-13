@@ -19,7 +19,7 @@
 @end
 
 @implementation TTGSwimmerDetailDisplayVC
-@synthesize swimmerId;
+@synthesize detailObjectId;
 @synthesize managedObjectContext;
 
 
@@ -32,7 +32,7 @@
 {
 //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    if (swimmerId != nil)
+    if (detailObjectId != nil)
     {
         [self loadSwimmerView];
     }
@@ -42,10 +42,10 @@
 
 - (void) loadSwimmerView
 {
-    Swimmer *swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+    Swimmer *swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:detailObjectId];
     self.nameField.text = swimmer.fullName;
     self.genderField.text = swimmer.boyOrGirl;
-    self.birthdayField.text = [NSString stringWithFormat:@"%@  (%d)", swimmer.birthDateMMDDYYY, swimmer.age];
+    self.birthdayField.text = [NSString stringWithFormat:@"%@  (%ld)", swimmer.birthDateMMDDYYY, (long)swimmer.age];
 }
 
 - (IBAction)editSwimmerTapped:(id)sender {
@@ -66,7 +66,7 @@
     {
         NSLog(@"segue to edit-detail view");
         TTGSwimmerDetailVC *foo = segue.destinationViewController;
-        foo.swimmerId = swimmerId;
+        foo.detailObjectId = detailObjectId;
         foo.managedObjectContext = managedObjectContext;
     }
 }

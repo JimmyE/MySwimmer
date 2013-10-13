@@ -10,5 +10,7 @@
 
 @interface MeetEvent (MeetEventCatgy)
 -(NSString*) EventDescription;
-
+-(NSString*) StrokeDescription;
+-(NSString*) AgeClassDescription;
+-(NSString*) GenderDescription;
 @end

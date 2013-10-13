@@ -25,7 +25,7 @@
 
 @implementation TTGSwimmerDetailVC
 
-@synthesize swimmerId;
+@synthesize detailObjectId;
 @synthesize managedObjectContext;
 
 
@@ -36,8 +36,8 @@
     self.birthDateField.maximumDate = [NSDate date];
 
     NSString *title = @"New";
-    if (swimmerId != nil) {
-        _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:swimmerId];
+    if (detailObjectId != nil) {
+        _swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:detailObjectId];
         [self loadSwimmer];
         title = _swimmer.lastName;
     }

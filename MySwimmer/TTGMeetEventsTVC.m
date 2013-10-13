@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 TangoTiger. All rights reserved.
 //
 
+#import "TTGEventEditVC.h"
 #import "TTGMeetEventsTVC.h"
 #import "TTGMeetInfoCell.h"
 #import "TTGMeetEventCell.h"
@@ -15,14 +16,14 @@
 @interface TTGMeetEventsTVC ()
 @property (nonatomic, strong) SwimMeet *swimMeet;
 @property (nonatomic, strong) NSMutableArray *eventList;
-@property (nonatomic) BOOL newSwimmer;
+//@property (nonatomic) BOOL newSwimmer;
 
 @end
 
 @implementation TTGMeetEventsTVC
 
 @synthesize managedObjectContext;
-@synthesize swimmerId;
+@synthesize detailObjectId;
 
 const int MemberInfoSectionId = 0;
 
@@ -32,15 +33,15 @@ const int MemberInfoSectionId = 0;
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-    if (swimmerId != nil ){
-        _swimMeet = (SwimMeet*) [managedObjectContext objectRegisteredForID:swimmerId];
-        self.newSwimmer = NO;
+    if (detailObjectId != nil ){
+        _swimMeet = (SwimMeet*) [managedObjectContext objectRegisteredForID:detailObjectId];
+//        self.newSwimmer = NO;
     }
     else {
         _swimMeet = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
         _swimMeet.meetDate = [NSDate date];
-        self.newSwimmer = YES;
-        self.editing = YES;
+//        self.newSwimmer = YES;
+//        self.editing = YES;
     }
 
     _eventList = [NSMutableArray arrayWithArray:[_swimMeet.hasEvents allObjects]];  // todo: sort array by event number
@@ -61,7 +62,7 @@ const int MemberInfoSectionId = 0;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int addRow = self.tableView.isEditing ? 1 : 0; //when editing, need a row for the "Add event" cell
-    int result = section == MemberInfoSectionId ? 1 : [_eventList count] + addRow;
+    int result = section == MemberInfoSectionId ? 1 : (int)[_eventList count] + addRow;
     return result;
 }
 
@@ -172,16 +173,26 @@ const int MemberInfoSectionId = 0;
     _swimMeet.meetType = [NSNumber numberWithInt:meetCell.meetType.selectedSegmentIndex];
 }
 
-/*
+- (IBAction)addEventTapped:(id)sender {
+    [self performSegueWithIdentifier:@"addMeetEvent" sender:sender];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"addMeetEvent"] || [segue.identifier isEqual:@"editMeetEvent"])
+    {
+        TTGEventEditVC *foo = segue.destinationViewController;
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        
+        foo.detailObjectId = [segue.identifier isEqual:@"editMeetEvent"] ? [[self.eventList objectAtIndex:indexPath.row] objectID] : nil;
+        
+        foo.managedObjectContext = managedObjectContext;
+    }
+
 }
 
- */
 
 @end

@@ -10,6 +10,7 @@
 #import "TTGISwimmerVC.h"
 
 @interface TTGMeetEventsTVC : UITableViewController <TTGISwimmerVC>
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 
 @end

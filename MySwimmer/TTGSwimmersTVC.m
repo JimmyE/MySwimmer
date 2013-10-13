@@ -91,7 +91,7 @@
  numberOfRowsInSection:(NSInteger)section
 {
     id  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    NSLog(@"numberOfRowsInSection: %d", [sectionInfo numberOfObjects]);
+    NSLog(@"numberOfRowsInSection: %lu", (unsigned long)[sectionInfo numberOfObjects]);
     
     return [sectionInfo numberOfObjects];
 }
@@ -154,11 +154,10 @@
     // Pass the selected object to the new view controller.
 
    if ([segue.identifier  isEqual: @"swimmerDetailSegue"] || [segue.identifier isEqual:@"addSwimmerSegue"])
-//    if ([segue.identifier  isEqual: @"swimmerDetailSegue"] )
     {
         id<TTGISwimmerVC> foo = segue.destinationViewController;
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        foo.swimmerId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
+        foo.detailObjectId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
         foo.managedObjectContext = managedObjectContext;
     }
 }

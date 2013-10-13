@@ -59,7 +59,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    NSLog(@"(meets) numberOfRowsInSection: %d", [sectionInfo numberOfObjects]);
+    NSLog(@"(meets) numberOfRowsInSection: %lu", (unsigned long)[sectionInfo numberOfObjects]);
     
     return [sectionInfo numberOfObjects];
 }
@@ -143,7 +143,7 @@
     {
         id<TTGISwimmerVC> foo = segue.destinationViewController;
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        foo.swimmerId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
+        foo.detailObjectId = indexPath != nil ? [[_fetchedResultsController objectAtIndexPath:indexPath] objectID] : nil;
         foo.managedObjectContext = managedObjectContext;
     }
 }

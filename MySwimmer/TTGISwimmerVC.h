@@ -10,7 +10,7 @@
 
 @protocol TTGISwimmerVC <NSObject>
 
-@property (nonatomic) NSManagedObjectID *swimmerId;
+@property (nonatomic) NSManagedObjectID *detailObjectId;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

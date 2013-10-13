@@ -28,6 +28,38 @@
     return Free;
 }
 
+- (NSString*) StrokeDescription
+{
+    switch ([ self StrokeTypeAlt ]) {
+        case Free:
+            return @"Free";
+        case Back:
+            return @"Backstroke";
+        case Breast:
+            return @"Breast";
+        case Fly:
+            return @"Fly";
+            
+        default:
+            break;
+    }
+    return @"";
+}
+
+- (NSString*) AgeClassDescription
+{
+    if (self.maxAge > 0)
+    {
+        return [NSString stringWithFormat:@"%@ and under", self.maxAge];
+    }
+    return @"";
+}
+
+- (NSString*) GenderDescription
+{
+    return self.gender.intValue == 0 ? @"Boy" : @"Girl";
+}
+
 - (TTGGenderType) GenderTypeAlt
 {
     

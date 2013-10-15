@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TTGISwimmerVC.h"
 
-@interface TTGMeetEventsTVC : UITableViewController <TTGISwimmerVC>
+@interface TTGMeetEventsTVC : UITableViewController <TTGISwimmerVC, UIPickerViewDelegate>
 //@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 

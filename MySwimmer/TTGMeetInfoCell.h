@@ -11,7 +11,9 @@
 @interface TTGMeetInfoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextField *meetInfoName;
 @property (weak, nonatomic) IBOutlet UITextField *meetLocationField;
-@property (weak, nonatomic) IBOutlet UITextField *meetDateField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *meetType;
+//@property (weak, nonatomic) IBOutlet UIDatePicker *meetDatePicker;
+//@property (weak, nonatomic) IBOutlet UILabel *meetDateField;
+@property (weak, nonatomic) IBOutlet UITextField *meetDateField;
 
 @end

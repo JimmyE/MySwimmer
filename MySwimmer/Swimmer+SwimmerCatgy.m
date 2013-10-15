@@ -17,6 +17,10 @@
 
 -(NSInteger) age
 {
+    if (self.birthDate == nil) {
+        return 0;
+    }
+    
     NSDate* now = [NSDate date];
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
                                        components:NSYearCalendarUnit

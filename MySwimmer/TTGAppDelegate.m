@@ -33,11 +33,14 @@
     meetsTVC.managedObjectContext = context;
     
     [self loadTestData];  // TEMP ***
+    
     return YES;
 }
 
 - (void) loadTestData
 {
+    NSLog(@"Loading test data");
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"MM-dd-yyyy";
 

@@ -42,8 +42,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 #pragma mark - UI actions/events
 - (IBAction)addMeetTapped:(id)sender {
     [self performSegueWithIdentifier:@"meetInfoSegue" sender:self];
@@ -51,13 +51,11 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
     NSLog(@"(meets) numberOfRowsInSection: %lu", (unsigned long)[sectionInfo numberOfObjects]);
     

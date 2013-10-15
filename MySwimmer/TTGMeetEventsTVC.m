@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 TangoTiger. All rights reserved.
 //
 
-#import "TTGEventEditVC.h"
 #import "TTGMeetEventsTVC.h"
 #import "TTGMeetInfoCell.h"
 #import "TTGMeetEventCell.h"
+#import "TTGEventEditTVC.h"
 #import "SwimMeet.h"
 #import "TTGHelper.h"
 
@@ -68,7 +68,7 @@ const int MemberInfoSectionId = 0;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == MemberInfoSectionId)
-        return 120;  //todo
+        return 100;  //todo
     return 44;
 }
 
@@ -102,6 +102,7 @@ const int MemberInfoSectionId = 0;
         TTGMeetEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         MeetEvent *event = [_eventList objectAtIndex:indexPath.row];
         cell.eventDescField.text = [NSString stringWithFormat:@"%@", event.EventDescription];
+        cell.ageDescField.text = event.AgeClassDescription;
         return cell;
     }
 }
@@ -184,10 +185,11 @@ const int MemberInfoSectionId = 0;
 {
     if ([segue.identifier  isEqual: @"addMeetEvent"] || [segue.identifier isEqual:@"editMeetEvent"])
     {
-        TTGEventEditVC *foo = segue.destinationViewController;
+        TTGEventEditTVC *foo = segue.destinationViewController;
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         
         foo.detailObjectId = [segue.identifier isEqual:@"editMeetEvent"] ? [[self.eventList objectAtIndex:indexPath.row] objectID] : nil;
+        foo.swimMeetId = self.swimMeet.objectID;
         
         foo.managedObjectContext = managedObjectContext;
     }

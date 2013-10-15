@@ -240,16 +240,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="E28-3c-a6N">
             <objects>
                 <tableViewController title="Events" id="N6e-QO-QCW" customClass="TTGMeetEventsTVC" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vpe-Mt-BtF">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vpe-Mt-BtF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meetInfoCell" rowHeight="119" id="ajT-Jo-pEs" customClass="TTGMeetInfoCell">
-                                <rect key="frame" x="0.0" y="119" width="320" height="119"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meetInfoCell" rowHeight="108" id="ajT-Jo-pEs" customClass="TTGMeetInfoCell">
+                                <rect key="frame" x="0.0" y="119" width="320" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ajT-Jo-pEs" id="rhC-HS-bTY">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuH-G0-Aib">
@@ -262,7 +262,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbN-Gj-Ryz">
-                                            <rect key="frame" x="20" y="44" width="165" height="30"/>
+                                            <rect key="frame" x="20" y="39" width="165" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -272,14 +272,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LqX-r5-42a">
-                                            <rect key="frame" x="203" y="44" width="97" height="30"/>
+                                            <rect key="frame" x="203" y="39" width="97" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="puO-qZ-22S">
-                                            <rect key="frame" x="20" y="77" width="123" height="29"/>
+                                            <rect key="frame" x="20" y="70" width="165" height="29"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="SCM"/>
@@ -297,30 +297,38 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="meetEventCell" id="AwE-zq-2GK" customClass="TTGMeetEventCell">
-                                <rect key="frame" x="0.0" y="238" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="227" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AwE-zq-2GK" id="iAC-ez-E9t">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEN-Qy-zT8">
-                                            <rect key="frame" x="20" y="11" width="247" height="21"/>
+                                            <rect key="frame" x="20" y="2" width="247" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-cB-13X">
+                                            <rect key="frame" x="42" y="22" width="153" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="ageDescField" destination="RdN-cB-13X" id="uil-0C-oHc"/>
                                     <outlet property="eventDescField" destination="EEN-Qy-zT8" id="LgP-Cp-N1A"/>
-                                    <segue destination="Jx2-xi-MNw" kind="push" identifier="editMeetEvent" id="bDV-Cb-E9S"/>
+                                    <segue destination="Jx2-xi-MNw" kind="push" identifier="editMeetEvent" id="xRZ-rt-THQ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addEventCell" id="3v3-WB-iiW" customClass="TTGMeetEventCell">
-                                <rect key="frame" x="0.0" y="282" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addEventCell" id="3v3-WB-iiW" customClass="TTGMeetEventCell">
+                                <rect key="frame" x="0.0" y="271" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3v3-WB-iiW" id="9w4-Ja-bc2">
-                                    <rect key="frame" x="0.0" y="0.0" width="253" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIb-LK-hb9">
@@ -338,7 +346,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Jx2-xi-MNw" kind="push" identifier="addMeetEvent" trigger="accessoryAction" id="NVd-z7-3lw"/>
+                                    <segue destination="Jx2-xi-MNw" kind="push" identifier="addMeetEvent" id="hKB-Kh-Fyp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -400,14 +408,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbv-Bg-gUi">
-                                                    <rect key="frame" x="97" y="7" width="97" height="30"/>
+                                                    <rect key="frame" x="104" y="7" width="97" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="Jx2-xi-MNw" id="Jaj-N5-QZT"/>
                                                     </connections>
                                                 </textField>
+                                                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="JH1-nw-VAK">
+                                                    <rect key="frame" x="206" y="8" width="94" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <connections>
+                                                        <action selector="eventStepperValueChanged:" destination="Jx2-xi-MNw" eventType="valueChanged" id="EsP-tS-Wdf"/>
+                                                    </connections>
+                                                </stepper>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -524,11 +539,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="Jx2-xi-MNw" id="kia-Jc-kn0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xkM-dG-lKL"/>
+                    <navigationItem key="navigationItem" id="xkM-dG-lKL">
+                        <barButtonItem key="backBarButtonItem" title="Meet" id="Wcw-xp-z1M"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="ageClassField" destination="Juz-At-JK7" id="2oj-FR-Jb4"/>
                         <outlet property="distanceField" destination="Iab-ty-6aY" id="9zz-Lq-zQ9"/>
                         <outlet property="eventNbrField" destination="zbv-Bg-gUi" id="TNA-es-xqS"/>
+                        <outlet property="eventNbrStepper" destination="JH1-nw-VAK" id="au6-NW-j28"/>
                         <outlet property="eventeTypeField" destination="8gi-vA-1Di" id="xz3-sS-4Po"/>
                         <outlet property="meetNameField" destination="8ai-gz-zHA" id="dsT-d1-4MT"/>
                         <outlet property="strokeField" destination="xco-cq-8Tp" id="seK-6D-arS"/>
@@ -854,6 +872,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="gI6-Sm-eNb"/>
-        <segue reference="NVd-z7-3lw"/>
+        <segue reference="xRZ-rt-THQ"/>
     </inferredMetricsTieBreakers>
 </document>

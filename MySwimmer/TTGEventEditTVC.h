@@ -11,5 +11,6 @@
 
 
 @interface TTGEventEditTVC : UITableViewController  <TTGISwimmerVC, UITextFieldDelegate>
+@property (nonatomic) NSManagedObjectID *swimMeetId;
 
 @end

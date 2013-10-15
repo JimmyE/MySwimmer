@@ -10,5 +10,6 @@
 
 @interface TTGMeetEventCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *eventDescField;
+@property (weak, nonatomic) IBOutlet UILabel *ageDescField;
 
 @end

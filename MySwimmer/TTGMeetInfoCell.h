@@ -12,8 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *meetInfoName;
 @property (weak, nonatomic) IBOutlet UITextField *meetLocationField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *meetType;
-//@property (weak, nonatomic) IBOutlet UIDatePicker *meetDatePicker;
-//@property (weak, nonatomic) IBOutlet UILabel *meetDateField;
 @property (weak, nonatomic) IBOutlet UITextField *meetDateField;
+@property (strong, nonatomic) IBOutlet UIDatePicker *meetDatePicker;
 
 @end

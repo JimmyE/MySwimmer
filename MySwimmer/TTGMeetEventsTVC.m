@@ -19,7 +19,6 @@
 @property (nonatomic, assign) BOOL isNewMeet;
 @property (nonatomic, assign) BOOL showMeetDatePicker;
 
-
 @end
 
 @implementation TTGMeetEventsTVC
@@ -73,15 +72,13 @@ const int MemberInfoSectionId = 0;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == MemberInfoSectionId)
     {
-        /*
         if (_showMeetDatePicker) {
             return 200;  //todo
         }
         else {
             return 100;
         }
-         */
-        return 110;  // ** TODO **
+//        return 110;  // ** TODO **
     }
     return 44;
 }
@@ -93,25 +90,17 @@ const int MemberInfoSectionId = 0;
         static NSString *CellIdentifier = @"meetInfoCell";
         TTGMeetInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        //cell.meetDatePicker.hidden = YES;
-        
+
         cell.meetInfoName.text = _swimMeet.name;
         cell.meetLocationField.text = [NSString stringWithFormat:@"@%@", _swimMeet.location];
         cell.meetDateField.text = [TTGHelper formatDateMMDDYYYY:_swimMeet.meetDate];
         cell.meetType.selectedSegmentIndex = [_swimMeet.meetType integerValue];
         
-        // ** TODO ** getting date picker to always show! based on touch event
-        // ** todo: hide datepicker when done
-        cell.meetDateField.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tapGesture =
-        [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(meetDateTapped:)];
-        [cell.meetDateField addGestureRecognizer:tapGesture];
-        
-        //cell.meetDateField.enabled = NO;
         cell.meetInfoName.enabled = NO;
-//        cell.meetDateField.enabled = NO;
+        cell.meetDateField.enabled = NO;
         cell.meetLocationField.enabled = NO;
         cell.meetType.enabled = NO;
+
         return cell;
     }
     else if (indexPath.row == self.swimMeet.hasEvents.count)
@@ -139,42 +128,6 @@ const int MemberInfoSectionId = 0;
 
 }
 
-- (IBAction)meetDateTapped:(id)sender {
-    if (!self.editing ){
-        return;
-    }
-    
-    NSLog(@"date tapped");
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    
-    TTGMeetInfoCell *cell = (TTGMeetInfoCell*) [self.tableView cellForRowAtIndexPath:indexPath];
-  //  cell.meetDateField.hidden = YES;
-//    cell.meetDatePicker.hidden  = NO;
-    cell.meetType.hidden    = YES;
-    _showMeetDatePicker = YES;
-    
-    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    datePicker.date = [NSDate date];
-    [datePicker addTarget:self action:@selector(datePickerValueChanged) forControlEvents:UIControlEventValueChanged ];
-    [cell.meetDateField setInputView:datePicker];
-
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    
-}
-- (void) datePickerValueChanged {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    
-    TTGMeetInfoCell *cell = (TTGMeetInfoCell*) [self.tableView cellForRowAtIndexPath:indexPath];
-
-    UIDatePicker *picker =  (UIDatePicker *) [cell.meetDateField inputView];
-//    cell.meetDateField.text = picker.date;
-    cell.meetDateField.text = [TTGHelper formatDateMMDDYYYY:picker.date];
-    newMeetDate = picker.date;
-
-}
-
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
     [super setEditing:editing animated:animate];
@@ -192,7 +145,7 @@ const int MemberInfoSectionId = 0;
     } else {
         //[_eventList addObject:[[MeetEvent alloc]init]];
         [self.tableView beginUpdates];
-        [[self tableView] insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationTop];
+        [[self tableView] insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
     }
     
@@ -211,6 +164,7 @@ const int MemberInfoSectionId = 0;
     meetCell.meetInfoName.enabled = editing;
     meetCell.meetLocationField.enabled = editing;
     meetCell.meetType.enabled = editing;
+    meetCell.meetDateField.enabled = editing;
     if (editing)    {
         meetCell.meetLocationField.text = _swimMeet.location; //reset field, remove '@'
     }
@@ -219,10 +173,33 @@ const int MemberInfoSectionId = 0;
     meetCell.meetLocationField.borderStyle = editing ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
 }
 
+#pragma mark - Text Delegate
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField {
+    TTGMeetInfoCell *infoCell = [self getMeetInfoCell];
+    
+    if ([textField isEqual:infoCell.meetDateField]) {
+        infoCell.meetDatePicker = [[UIDatePicker alloc] init];
+        infoCell.meetDatePicker.datePickerMode = UIDatePickerModeDate;
+        [infoCell.meetDatePicker addTarget:self action:@selector(datePickerValueChanged) forControlEvents:UIControlEventValueChanged];
+        textField.inputView = infoCell.meetDatePicker;
+    }
+}
+
+- (void) datePickerValueChanged {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    TTGMeetInfoCell *cell = (TTGMeetInfoCell*) [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    UIDatePicker *picker =  (UIDatePicker *) [cell.meetDateField inputView];
+    cell.meetDateField.text = [TTGHelper formatDateMMDDYYYY:picker.date];
+    newMeetDate = picker.date;
+    
 }
 
 -(void) saveMeetInfo {

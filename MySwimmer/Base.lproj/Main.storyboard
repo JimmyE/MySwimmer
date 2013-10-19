@@ -572,6 +572,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tableView>
                     <navigationItem key="navigationItem" id="xkM-dG-lKL">
                         <barButtonItem key="backBarButtonItem" title="Meet" id="Wcw-xp-z1M"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="T98-aa-QzZ">
+                            <connections>
+                                <action selector="doneTapped:" destination="Jx2-xi-MNw" id="diZ-0j-yfL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ageClassField" destination="Juz-At-JK7" id="2oj-FR-Jb4"/>

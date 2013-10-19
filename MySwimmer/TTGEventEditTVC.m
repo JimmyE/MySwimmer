@@ -50,6 +50,7 @@
 
 - (void) loadMeetEventInfo
 {
+    BOOL enableFields = NO;
     if (self.detailObjectId != nil)
     {
         _meetEvent = (MeetEvent*) [managedObjectContext objectRegisteredForID:detailObjectId];
@@ -65,6 +66,7 @@
     else
     {
         _swimMeet = (SwimMeet*) [managedObjectContext objectRegisteredForID:swimMeetId];
+        enableFields = YES;
     
     }
     
@@ -73,7 +75,7 @@
 
     self.meetNameField.text = _swimMeet.name;
     
-    [self enableDisableFields:NO];
+    [self enableDisableFields:enableFields];
 }
 
 - (void) enableDisableFields:(BOOL) enableFields
@@ -131,6 +133,23 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
+}
+
+#pragma mark - Actions
+- (IBAction)doneTapped:(id)sender {
+    [self saveEvent];
+    [self closePopup];
+}
+
+- (void) saveEvent {
+    NSLog(@"Save event");
+    self.meetEvent.number = [NSNumber numberWithInt:[self.eventNbrField.text intValue]];
+    self.meetEvent.strokeType = [NSNumber numberWithInt:self.strokeField.selectedSegmentIndex];
+    
+}
+
+- (void) closePopup {
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 /*

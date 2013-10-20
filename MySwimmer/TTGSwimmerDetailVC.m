@@ -34,7 +34,6 @@ bool isNewSwimmer = NO;
 {
     [super viewDidLoad];
 
-
     self.birthDateField.maximumDate = [NSDate date];
 
     NSString *title = @"New";
@@ -73,8 +72,7 @@ bool isNewSwimmer = NO;
     [self closePopup];
 }
 
-- (void) save
-{
+- (void) save {
 //        * todo: remove 'new' swimmer before returning
     if (self.firstNameField.text.length == 0 && self.lastNameField.text.length == 0)
     {
@@ -98,21 +96,17 @@ bool isNewSwimmer = NO;
     self.birthDateLabel.text = self.swimmer.birthDateMMDDYYY;
 }
 
-- (void) closePopup
-{
+- (void) closePopup {
     //[[self navigationController] popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField
-{
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }
 
-- (void) loadSwimmer
-{
-//    self.navigationItem.
+- (void) loadSwimmer {
     self.firstNameField.text = self.swimmer.firstName;
     self.lastNameField.text = self.swimmer.lastName;
     self.genderField.selectedSegmentIndex = [self.swimmer.gender  integerValue];
@@ -122,15 +116,6 @@ bool isNewSwimmer = NO;
         self.birthDateField.date = self.swimmer.birthDate;
         self.birthDateLabel.text = self.swimmer.birthDateMMDDYYY;
     }
-}
-
-- (void) enableDisableFields:(BOOL) enableFields
-{
-    self.firstNameField.enabled = enableFields;
-    self.lastNameField.enabled = enableFields;
-
-    self.birthDateLabel.hidden = enableFields;
-    self.birthDateField.hidden = !enableFields;
 }
 
 @end

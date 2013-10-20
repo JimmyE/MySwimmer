@@ -41,6 +41,7 @@
 		38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAE317FCB26D00087FCD /* TTGSwimmersTVC.m */; };
 		38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */; };
 		38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */; };
+		38AD88B918136316003E1158 /* TTGDistanceOptionsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AD88B818136316003E1158 /* TTGDistanceOptionsTVC.m */; };
 		38EAB2D218032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB2D118032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,8 @@
 		38A2CAEA17FCB3DC00087FCD /* TTGSwimmerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerCell.m; sourceTree = "<group>"; };
 		38A2CAF017FCB81400087FCD /* TTGSwimmerDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerDetailVC.h; sourceTree = "<group>"; };
 		38A2CAF117FCB81400087FCD /* TTGSwimmerDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerDetailVC.m; sourceTree = "<group>"; };
+		38AD88B718136316003E1158 /* TTGDistanceOptionsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGDistanceOptionsTVC.h; sourceTree = "<group>"; };
+		38AD88B818136316003E1158 /* TTGDistanceOptionsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGDistanceOptionsTVC.m; sourceTree = "<group>"; };
 		38EAB2D018032E99007B4D73 /* TTGSwimmerDetailDisplayVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGSwimmerDetailDisplayVC.h; sourceTree = "<group>"; };
 		38EAB2D118032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTGSwimmerDetailDisplayVC.m; sourceTree = "<group>"; };
 		38EAB2D318033819007B4D73 /* TTGISwimmerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTGISwimmerVC.h; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				382EC1161804938900CECBC6 /* TTGMeetEventsTVC.m */,
 				380508071809E3F800BABF48 /* TTGEventEditTVC.h */,
 				380508081809E3F800BABF48 /* TTGEventEditTVC.m */,
+				38AD88B718136316003E1158 /* TTGDistanceOptionsTVC.h */,
+				38AD88B818136316003E1158 /* TTGDistanceOptionsTVC.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				382EC11A1804971A00CECBC6 /* TTGMeetInfoCell.m in Sources */,
 				38A2CAB517FCB1ED00087FCD /* TTGAppDelegate.m in Sources */,
 				38198E0017FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m in Sources */,
+				38AD88B918136316003E1158 /* TTGDistanceOptionsTVC.m in Sources */,
 				382EC11418048F0500CECBC6 /* TTGMeetCell.m in Sources */,
 				38A2CAEB17FCB3DC00087FCD /* TTGSwimmerCell.m in Sources */,
 				38727D3C18059D4D006F15F9 /* TTGHelper.m in Sources */,

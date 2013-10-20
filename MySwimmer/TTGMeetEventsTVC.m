@@ -50,6 +50,12 @@ const int MemberInfoSectionId = 0;
     _eventList = [NSMutableArray arrayWithArray:[_swimMeet.hasEvents allObjects]];  // todo: sort array by event number
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    _eventList = [NSMutableArray arrayWithArray:[_swimMeet.hasEvents allObjects]];  // todo: sort array by event number
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -121,6 +127,7 @@ const int MemberInfoSectionId = 0;
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath  {
     return indexPath.section == MemberInfoSectionId ? NO : YES;
+ //   return NO;
 }
 
 -  (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{

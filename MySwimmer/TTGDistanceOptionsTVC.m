@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
 
-    self.distanceForEvents = @[@25, @50, @100, @200, @400, @800, @1000, @1500, @1650];
+    self.distanceForEvents = self.meetEvent.forMeet.EventDistances;
 }
 
 - (void)didReceiveMemoryWarning

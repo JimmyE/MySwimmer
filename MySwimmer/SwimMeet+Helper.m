@@ -26,4 +26,24 @@
     
     return @"?";
 }
+
+- (NSArray*) EventDistances {
+    NSArray* scmDistances = @[@25, @50, @100, @200, @400, @800, @1500];
+    NSArray* scyDistances = @[@25, @50, @100, @200, @500, @1000, @1650];
+    NSArray* lcmDistances = @[@50, @100, @200, @400, @800, @1500];
+
+    switch ([self.meetType intValue]) {
+        case 0:
+            return scmDistances;
+        case 1:
+            return lcmDistances;
+        case 2:
+            return scyDistances;
+            
+        default:
+            break;
+    }
+
+    return [[NSArray init] alloc];
+}
 @end

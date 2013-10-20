@@ -11,4 +11,5 @@
 @interface SwimMeet (Helper)
 - (NSString*) CourseTypeDescription; // scm, lcm or scy
 
+- (NSArray*) EventDistances;
 @end

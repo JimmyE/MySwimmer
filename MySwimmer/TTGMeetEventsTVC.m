@@ -180,6 +180,7 @@ const int MemberInfoSectionId = 0;
     meetCell.meetLocationField.borderStyle = editing ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
 }
 
+
 #pragma mark - Text Delegate
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {

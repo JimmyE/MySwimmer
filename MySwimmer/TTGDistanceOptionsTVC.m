@@ -55,7 +55,7 @@
     
     int distanceOption = [[self.distanceForEvents objectAtIndex:indexPath.row] intValue];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", distanceOption];
+    cell.textLabel.text = [NSString stringWithFormat:@"%d  (%@)", distanceOption, self.meetEvent.forMeet.CourseTypeDescription];
     if (distanceOption == [self.meetEvent.distance integerValue])
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;

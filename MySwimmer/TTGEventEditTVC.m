@@ -27,6 +27,9 @@
 @synthesize swimMeetId;
 @synthesize managedObjectContext;
 
+const int DistanceInfoCellSection = 1;
+const int DistanceInfoCellRow = 2;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -46,7 +49,7 @@
     {
         _meetEvent = (MeetEvent*) [managedObjectContext objectRegisteredForID:detailObjectId];
         _swimMeet = _meetEvent.forMeet;
-        [self enableDisableFields:NO];
+        [self enableInputFields:NO];
     }
     else
     {
@@ -83,7 +86,7 @@
     self.meetNameField.text = _swimMeet.name;
  }
 
-- (void) enableDisableFields:(BOOL) enableFields
+- (void) enableInputFields:(BOOL) enableFields
 {
     self.eventNbrField.enabled = enableFields;
     self.ageClassField.enabled   = enableFields;
@@ -93,11 +96,13 @@
     
     self.eventNbrField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
     self.ageClassField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
-//    self.strokeField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
     self.eventeTypeField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
-//    self.distanceField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
 
     self.eventNbrStepper.hidden = !enableFields;
+}
+
+- (UITableViewCell*) getDistanceCell {
+    return [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:DistanceInfoCellRow inSection:DistanceInfoCellSection] ];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,17 +136,26 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
+//    [self.tableView setEditing:editing animated:animated];
     
-    [self enableDisableFields:editing];
+    [self enableInputFields:editing];
     
     if (!editing) {
         [self saveEvent];
         [self closePopup];
     }
 }
-
+/*
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return YES;
+}
+ */
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath   {
+    return UITableViewCellEditingStyleNone;
+}
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath  {
     return NO;
 }
 
@@ -170,13 +184,11 @@
     self.eventNbrField.text = [NSString stringWithFormat:@"%.f", self.eventNbrStepper.value];
 }
 
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"distanceSegue" sender:nil];
-}
- */
-
 #pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    return self.isEditing;
+}
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -184,10 +196,8 @@
     if ([segue.identifier  isEqual: @"distanceSegue"] )
     {
         TTGDistanceOptionsTVC *foo = segue.destinationViewController;
-//        foo.distance = [self.meetEvent.distance integerValue];
         foo.meetEvent = self.meetEvent;
     }
-    
 }
 
 @end

@@ -17,9 +17,13 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *strokeField;
 @property (weak, nonatomic) IBOutlet UILabel *distanceField;
 @property (weak, nonatomic) IBOutlet UIStepper *eventNbrStepper;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
+
 - (IBAction)eventStepperValueChanged:(id)sender;
 @property (strong, nonatomic) MeetEvent *meetEvent;
 @property (strong, nonatomic) SwimMeet *swimMeet;
+
+@property (strong, nonatomic) NSArray *meetAgeGroupOptions;
 @end
 
 @implementation TTGEventEditTVC
@@ -63,6 +67,8 @@ const int DistanceInfoCellRow = 2;
         self.editing = YES;
     }
     
+    self.meetAgeGroupOptions = @[ @"6 and under", @"8 and under", @"10 and under", @"12 and under"];
+    
     [self loadMeetEventInfo];
 }
 
@@ -101,9 +107,11 @@ const int DistanceInfoCellRow = 2;
     self.eventNbrStepper.hidden = !enableFields;
 }
 
+/*
 - (UITableViewCell*) getDistanceCell {
     return [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:DistanceInfoCellRow inSection:DistanceInfoCellSection] ];
 }
+ */
 
 - (void)didReceiveMemoryWarning
 {
@@ -111,10 +119,63 @@ const int DistanceInfoCellRow = 2;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - textfield delegate
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField {
+    /*
+    UITableViewCell *infoCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    */
+    if ([textField isEqual:self.ageClassField]) {
+        self.pickerView = [[UIPickerView alloc] init];
+//        [self.pickerView  AddTarg]
+        textField.inputView = self.pickerView;
+        
+//        infoCell.meetDatePicker = [[UIDatePicker alloc] init];
+//        infoCell.meetDatePicker.datePickerMode = UIDatePickerModeDate;
+//        [infoCell.meetDatePicker addTarget:self action:@selector(datePickerValueChanged) forControlEvents:UIControlEventValueChanged];
+//        textField.inputView = infoCell.meetDatePicker;
+    }
+}
+
+/*
+- (void) datePickerValueChanged {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    TTGMeetInfoCell *cell = (TTGMeetInfoCell*) [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    UIDatePicker *picker =  (UIDatePicker *) [cell.meetDateField inputView];
+    cell.meetDateField.text = [TTGHelper formatDateMMDDYYYY:picker.date];
+    newMeetDate = picker.date;
+    
+}
+ */
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component {
+    NSLog(@"pickerView.rows: %d", self.meetAgeGroupOptions.count);
+    return self.meetAgeGroupOptions.count;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row
+           forComponent:(NSInteger)component
+{
+    NSLog(@"titleForRow: %d  title: %@", row, [self.meetAgeGroupOptions objectAtIndex:row]);
+    return [self.meetAgeGroupOptions objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
+{
+    
 }
 
 #pragma mark - Table view data source
@@ -155,6 +216,7 @@ const int DistanceInfoCellRow = 2;
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath   {
     return UITableViewCellEditingStyleNone;
 }
+
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath  {
     return NO;
 }
@@ -164,6 +226,19 @@ const int DistanceInfoCellRow = 2;
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     return cell;
 }
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+
+/*
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self.pickerView reloadAllComponents];
+}
+ */
 
 #pragma mark - Actions
 

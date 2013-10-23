@@ -17,7 +17,7 @@
 @property (nonatomic, strong) SwimMeet *swimMeet;
 @property (nonatomic, strong) NSMutableArray *eventList;
 @property (nonatomic, assign) BOOL isNewMeet;
-@property (nonatomic, assign) BOOL showMeetDatePicker;
+//@property (nonatomic, assign) BOOL showMeetDatePicker;
 
 @end
 
@@ -33,7 +33,7 @@ const int MemberInfoSectionId = 0;
 {
     [super viewDidLoad];
     
-    self.showMeetDatePicker = NO;
+//    self.showMeetDatePicker = NO;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     if (detailObjectId != nil ){
@@ -75,16 +75,11 @@ const int MemberInfoSectionId = 0;
     return result;
 }
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == MemberInfoSectionId)
     {
-        if (_showMeetDatePicker) {
-            return 200;  //todo
-        }
-        else {
-            return 100;
-        }
-//        return 110;  // ** TODO **
+        return 100; //todo
     }
     return 44;
 }

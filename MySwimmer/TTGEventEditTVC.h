@@ -10,7 +10,7 @@
 #import "TTGISwimmerVC.h"
 
 
-@interface TTGEventEditTVC : UITableViewController  <TTGISwimmerVC, UITextFieldDelegate>
+@interface TTGEventEditTVC : UITableViewController  <TTGISwimmerVC, UITextFieldDelegate, UIPickerViewDataSource,UIPickerViewDelegate>
 @property (nonatomic) NSManagedObjectID *swimMeetId;
 
 @end

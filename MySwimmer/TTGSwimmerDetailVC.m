@@ -14,9 +14,10 @@
 @interface TTGSwimmerDetailVC ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
-@property (weak, nonatomic) IBOutlet UIDatePicker *birthDateField;
-@property (weak, nonatomic) IBOutlet UILabel *birthDateLabel;
+//@property (weak, nonatomic) IBOutlet UIDatePicker *birthDateField;
+//@property (weak, nonatomic) IBOutlet UILabel *birthDateLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *genderField;
+@property (weak, nonatomic) IBOutlet UITextField *birthDateTextField;
 
 @property (nonatomic, strong) Swimmer *swimmer;
 //@property (nonatomic,strong) NSManagedObjectContext *moc;
@@ -34,13 +35,15 @@ bool isNewSwimmer = NO;
 {
     [super viewDidLoad];
 
-    self.birthDateField.maximumDate = [NSDate date];
-
+    //.birthDateField.maximumDate = [NSDate date];
+    
+    NSDate *birthDate;
     NSString *title = @"New";
     if (detailObjectId != nil) {
         self.swimmer = (Swimmer*) [managedObjectContext objectRegisteredForID:detailObjectId];
         [self loadSwimmer];
         title = self.swimmer.lastName;
+        birthDate = self.swimmer.birthDate;
     }
     else{
        // self.moc = [[self managedObjectContext] initWithConcurrencyType:NSConfinementConcurrencyType];
@@ -49,7 +52,16 @@ bool isNewSwimmer = NO;
 
         self.swimmer = [NSEntityDescription insertNewObjectForEntityForName:@"Swimmer" inManagedObjectContext:self.managedObjectContext];
         isNewSwimmer = YES;
+        birthDate = [NSDate date];
     }
+    
+    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.date = birthDate;
+
+    [datePicker addTarget:self action:@selector(datePickerValueChanged) forControlEvents:UIControlEventValueChanged];
+    self.birthDateTextField.inputView = datePicker;
+
 }
 
 - (IBAction)doneTapped:(id)sender {
@@ -86,14 +98,13 @@ bool isNewSwimmer = NO;
     self.swimmer.firstName = self.firstNameField.text;
     self.swimmer.lastName = self.lastNameField.text;
     self.swimmer.gender = [NSNumber numberWithInt: [self.genderField selectedSegmentIndex]];
-    
+
     // strip 'time' component from date field
     unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
     NSCalendar* calendar = [NSCalendar currentCalendar];
-    NSDateComponents* components = [calendar components:flags fromDate:self.birthDateField.date];
+    UIDatePicker *picker =  (UIDatePicker *) [self.birthDateTextField inputView];
+    NSDateComponents* components = [calendar components:flags fromDate:picker.date];
     self.swimmer.birthDate = [calendar dateFromComponents:components];
-    
-    self.birthDateLabel.text = self.swimmer.birthDateMMDDYYY;
 }
 
 - (void) closePopup {
@@ -106,6 +117,15 @@ bool isNewSwimmer = NO;
     return YES;
 }
 
+- (IBAction)genderTapped:(id)sender {
+    [[self view] endEditing:YES];  //close keyboard
+}
+
+- (void) datePickerValueChanged {
+    UIDatePicker *picker =  (UIDatePicker *) [self.birthDateTextField inputView];
+    self.birthDateTextField.text = [TTGHelper formatDateMMDDYYYY:picker.date];
+}
+
 - (void) loadSwimmer {
     self.firstNameField.text = self.swimmer.firstName;
     self.lastNameField.text = self.swimmer.lastName;
@@ -113,8 +133,8 @@ bool isNewSwimmer = NO;
     
     if (_swimmer.birthDate != nil )
     {
-        self.birthDateField.date = self.swimmer.birthDate;
-        self.birthDateLabel.text = self.swimmer.birthDateMMDDYYY;
+//        self.birthDateField.date = self.swimmer.birthDate;
+        self.birthDateTextField.text = self.swimmer.birthDateMMDDYYY;
     }
 }
 

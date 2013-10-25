@@ -29,12 +29,16 @@ NSDate * newMeetDate;
 
 const int MemberInfoSectionId = 0;
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-//    self.showMeetDatePicker = NO;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.backBarButtonItem.target = self;
+    //self.navigationItem.backBarButtonItem.action = @selector(cancelChanges);
+//    self.navigationItem.leftBarButtonItem.target = self;
+//    self.navigationItem.leftBarButtonItem.action = @selector(cancelChanges);
 
     if (detailObjectId != nil ){
         _swimMeet = (SwimMeet*) [managedObjectContext objectRegisteredForID:detailObjectId];
@@ -43,6 +47,9 @@ const int MemberInfoSectionId = 0;
     else {
         _swimMeet = [NSEntityDescription insertNewObjectForEntityForName:@"SwimMeet" inManagedObjectContext:self.managedObjectContext];
         _swimMeet.meetDate = [NSDate date];
+        _swimMeet.name = @"";
+        _swimMeet.location = @"";
+        newMeetDate = _swimMeet.meetDate;
         _isNewMeet = YES;
         self.editing = YES;
     }
@@ -79,7 +86,7 @@ const int MemberInfoSectionId = 0;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == MemberInfoSectionId)
     {
-        return 100; //todo
+        return 120; //todo
     }
     return 44;
 }
@@ -101,6 +108,10 @@ const int MemberInfoSectionId = 0;
         cell.meetDateField.enabled = NO;
         cell.meetLocationField.enabled = NO;
         cell.meetType.enabled = NO;
+        
+        if (_isNewMeet) {
+            [self enableDisableMeetInfoFields:YES withCell:cell];
+        }
 
         return cell;
     }
@@ -161,8 +172,12 @@ const int MemberInfoSectionId = 0;
 }
 
 - (void) enableDisableMeetInfoFields:(BOOL)editing {
-
     TTGMeetInfoCell * meetCell = [self getMeetInfoCell];
+    [self enableDisableMeetInfoFields:editing withCell:meetCell];
+}
+
+- (void) enableDisableMeetInfoFields:(BOOL)editing withCell:(TTGMeetInfoCell*)meetCell {
+
     meetCell.meetInfoName.enabled = editing;
     meetCell.meetLocationField.enabled = editing;
     meetCell.meetType.enabled = editing;
@@ -205,8 +220,41 @@ const int MemberInfoSectionId = 0;
     
 }
 
+- (IBAction)courseTypeTapped:(id)sender {
+    [[self getMeetInfoCell] endEditing:YES];
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [[self view] endEditing:YES];
+}
+
+- (IBAction)cancelButtonTapped:(id)sender {
+    NSLog(@"cancel changes called");
+    [self undoChanges];
+    [[self navigationController] popViewControllerAnimated:YES];
+    //[self dismissViewControllerAnimated:YES completion:^{}];
+
+}
+
+- (void) undoChanges {
+    //[self.moc.undoManager endUndoGrouping];
+    //[self.moc.undoManager undo];
+    //[self.managedObjectContext undo];
+    
+    if (_isNewMeet == YES) {  //delete/remove newly added swimmer
+        [managedObjectContext refreshObject:self.swimMeet mergeChanges:NO];
+    }
+}
+
+
 -(void) saveMeetInfo {
     TTGMeetInfoCell * meetCell = [self getMeetInfoCell];
+    
+    if ([meetCell.meetInfoName.text length] == 0 && [meetCell.meetLocationField.text length] == 0 && _isNewMeet ){
+        [self undoChanges];
+        return;  // no name, don't save it
+        
+    }
     _swimMeet.name = meetCell.meetInfoName.text;
     _swimMeet.location = meetCell.meetLocationField.text;  // TODO * trim leading/trailing white space
     _swimMeet.meetType = [NSNumber numberWithInt:meetCell.meetType.selectedSegmentIndex];
@@ -214,6 +262,8 @@ const int MemberInfoSectionId = 0;
     if (newMeetDate != nil) {
         _swimMeet.meetDate = newMeetDate;
     }
+    
+    _isNewMeet = NO;
 }
 
 - (IBAction)addEventTapped:(id)sender {

@@ -12,6 +12,8 @@
 		38050815180A1E2400BABF48 /* SwimMeet+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38050814180A1E2400BABF48 /* SwimMeet+Helper.m */; };
 		38198DFD17FEF94700BD3740 /* Swimmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38198DFC17FEF94700BD3740 /* Swimmer.m */; };
 		38198E0017FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */; };
+		382A1D97181D588800306E5A /* TTGKeyValueOptionsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A1D96181D588800306E5A /* TTGKeyValueOptionsTVC.m */; };
+		382A1D9B181D5C0700306E5A /* TTGSwimOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 382A1D9A181D5C0700306E5A /* TTGSwimOption.m */; };
 		382EC10018046D8600CECBC6 /* man-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 382EC0FE18046D8600CECBC6 /* man-user.png */; };
 		382EC10118046D8600CECBC6 /* woman-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 382EC0FF18046D8600CECBC6 /* woman-user.png */; };
 		382EC1051804765D00CECBC6 /* TTGMeetsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 382EC1041804765D00CECBC6 /* TTGMeetsTVC.m */; };
@@ -66,6 +68,10 @@
 		38198DFC17FEF94700BD3740 /* Swimmer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmer.m; sourceTree = "<group>"; };
 		38198DFE17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swimmer+SwimmerCatgy.h"; sourceTree = "<group>"; };
 		38198DFF17FEF97E00BD3740 /* Swimmer+SwimmerCatgy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Swimmer+SwimmerCatgy.m"; sourceTree = "<group>"; };
+		382A1D95181D588800306E5A /* TTGKeyValueOptionsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTGKeyValueOptionsTVC.h; path = ../../../../../Jim/Development/IOS/MySwimmer/MySwimmer/TTGKeyValueOptionsTVC.h; sourceTree = "<group>"; };
+		382A1D96181D588800306E5A /* TTGKeyValueOptionsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTGKeyValueOptionsTVC.m; path = ../../../../../Jim/Development/IOS/MySwimmer/MySwimmer/TTGKeyValueOptionsTVC.m; sourceTree = "<group>"; };
+		382A1D99181D5C0700306E5A /* TTGSwimOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTGSwimOption.h; path = ../../../../../Jim/Development/IOS/MySwimmer/MySwimmer/TTGSwimOption.h; sourceTree = "<group>"; };
+		382A1D9A181D5C0700306E5A /* TTGSwimOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTGSwimOption.m; path = ../../../../../Jim/Development/IOS/MySwimmer/MySwimmer/TTGSwimOption.m; sourceTree = "<group>"; };
 		382EC0FE18046D8600CECBC6 /* man-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "man-user.png"; sourceTree = "<group>"; };
 		382EC0FF18046D8600CECBC6 /* woman-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "woman-user.png"; sourceTree = "<group>"; };
 		382EC1031804765D00CECBC6 /* TTGMeetsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTGMeetsTVC.h; sourceTree = "<group>"; };
@@ -143,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		382A1D98181D5BE400306E5A /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				382A1D99181D5C0700306E5A /* TTGSwimOption.h */,
+				382A1D9A181D5C0700306E5A /* TTGSwimOption.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		382EC10218046D8C00CECBC6 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +201,7 @@
 		38A2CAAA17FCB1ED00087FCD /* MySwimmer */ = {
 			isa = PBXGroup;
 			children = (
+				382A1D98181D5BE400306E5A /* utils */,
 				382EC10218046D8C00CECBC6 /* resources */,
 				38A2CAEC17FCB4A100087FCD /* model */,
 				38A2CAE817FCB3C500087FCD /* views */,
@@ -247,6 +263,8 @@
 				380508081809E3F800BABF48 /* TTGEventEditTVC.m */,
 				38AD88B718136316003E1158 /* TTGDistanceOptionsTVC.h */,
 				38AD88B818136316003E1158 /* TTGDistanceOptionsTVC.m */,
+				382A1D95181D588800306E5A /* TTGKeyValueOptionsTVC.h */,
+				382A1D96181D588800306E5A /* TTGKeyValueOptionsTVC.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -402,10 +420,12 @@
 				382EC1171804938900CECBC6 /* TTGMeetEventsTVC.m in Sources */,
 				387BDFD318064B2F00CA6CCC /* MeetEvent+MeetEventCatgy.m in Sources */,
 				380508091809E3F800BABF48 /* TTGEventEditTVC.m in Sources */,
+				382A1D97181D588800306E5A /* TTGKeyValueOptionsTVC.m in Sources */,
 				38A2CAE417FCB26D00087FCD /* TTGSwimmersTVC.m in Sources */,
 				38050815180A1E2400BABF48 /* SwimMeet+Helper.m in Sources */,
 				38A2CAB117FCB1ED00087FCD /* main.m in Sources */,
 				387BDFCD18063B9400CA6CCC /* SwimMeet.m in Sources */,
+				382A1D9B181D5C0700306E5A /* TTGSwimOption.m in Sources */,
 				3805080C180A0EF800BABF48 /* TTGNameValueCell.m in Sources */,
 				38EAB2D218032E99007B4D73 /* TTGSwimmerDetailDisplayVC.m in Sources */,
 				38A2CAF217FCB81400087FCD /* TTGSwimmerDetailVC.m in Sources */,

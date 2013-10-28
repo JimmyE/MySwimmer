@@ -8,22 +8,22 @@
 
 #import "TTGEventEditTVC.h"
 #import "TTGDistanceOptionsTVC.h"
+#import "TTGKeyValueOptionsTVC.h"
 
 @interface TTGEventEditTVC ()
 @property (weak, nonatomic) IBOutlet UILabel *meetNameField;
 @property (weak, nonatomic) IBOutlet UITextField *eventNbrField;
-@property (weak, nonatomic) IBOutlet UITextField *ageClassField;
 @property (weak, nonatomic) IBOutlet UITextField *eventeTypeField; //todo: timed final, prelim, or final
 @property (weak, nonatomic) IBOutlet UISegmentedControl *strokeField;
 @property (weak, nonatomic) IBOutlet UILabel *distanceField;
 @property (weak, nonatomic) IBOutlet UIStepper *eventNbrStepper;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UILabel *ageClassLabel;
 
 - (IBAction)eventStepperValueChanged:(id)sender;
 @property (strong, nonatomic) MeetEvent *meetEvent;
 @property (strong, nonatomic) SwimMeet *swimMeet;
 
-@property (strong, nonatomic) NSArray *meetAgeGroupOptions;
 @end
 
 @implementation TTGEventEditTVC
@@ -67,8 +67,6 @@ const int DistanceInfoCellRow = 2;
         self.editing = YES;
     }
     
-    self.meetAgeGroupOptions = @[ @"6 and under", @"8 and under", @"10 and under", @"12 and under"];
-    
     [self loadMeetEventInfo];
 }
 
@@ -83,7 +81,7 @@ const int DistanceInfoCellRow = 2;
     self.eventNbrStepper.minimumValue = 0;
     
     self.eventNbrField.text = [NSString stringWithFormat:@"%@", _meetEvent.number];
-    self.ageClassField.text = [_meetEvent AgeClassDescription];
+    self.ageClassLabel.text = [_meetEvent AgeClassDescription];
     self.eventeTypeField.text = @"timed final";
     self.distanceField.text = [NSString stringWithFormat:@"%@ %@", _meetEvent.distance, [_meetEvent.forMeet CourseTypeDescription]];
     self.strokeField.selectedSegmentIndex = [_meetEvent.strokeType intValue];
@@ -95,13 +93,11 @@ const int DistanceInfoCellRow = 2;
 - (void) enableInputFields:(BOOL) enableFields
 {
     self.eventNbrField.enabled = enableFields;
-    self.ageClassField.enabled   = enableFields;
     self.strokeField.enabled    = enableFields;
     self.eventeTypeField.enabled = enableFields;
-    self.distanceField.enabled = enableFields;
+//    self.distanceField.enabled = enableFields;
     
     self.eventNbrField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
-    self.ageClassField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
     self.eventeTypeField.borderStyle = enableFields ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
 
     self.eventNbrStepper.hidden = !enableFields;
@@ -130,16 +126,16 @@ const int DistanceInfoCellRow = 2;
     /*
     UITableViewCell *infoCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
     */
-    if ([textField isEqual:self.ageClassField]) {
-        self.pickerView = [[UIPickerView alloc] init];
+//    if ([textField isEqual:self.ageClassField]) {
+//        self.pickerView = [[UIPickerView alloc] init];
 //        [self.pickerView  AddTarg]
-        textField.inputView = self.pickerView;
+//        textField.inputView = self.pickerView;
         
 //        infoCell.meetDatePicker = [[UIDatePicker alloc] init];
 //        infoCell.meetDatePicker.datePickerMode = UIDatePickerModeDate;
 //        [infoCell.meetDatePicker addTarget:self action:@selector(datePickerValueChanged) forControlEvents:UIControlEventValueChanged];
 //        textField.inputView = infoCell.meetDatePicker;
-    }
+//    }
 }
 
 /*
@@ -154,29 +150,6 @@ const int DistanceInfoCellRow = 2;
     
 }
  */
-
-// returns the number of 'columns' to display.
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-// returns the # of rows in each component..
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component {
-    NSLog(@"pickerView.rows: %d", self.meetAgeGroupOptions.count);
-    return self.meetAgeGroupOptions.count;
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row
-           forComponent:(NSInteger)component
-{
-    NSLog(@"titleForRow: %d  title: %@", row, [self.meetAgeGroupOptions objectAtIndex:row]);
-    return [self.meetAgeGroupOptions objectAtIndex:row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
-{
-    
-}
 
 #pragma mark - Table view data source
 
@@ -232,14 +205,6 @@ const int DistanceInfoCellRow = 2;
     return 44;
 }
 
-
-/*
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self.pickerView reloadAllComponents];
-}
- */
-
 #pragma mark - Actions
 
 - (void) saveEvent {
@@ -270,8 +235,44 @@ const int DistanceInfoCellRow = 2;
 {
     if ([segue.identifier  isEqual: @"distanceSegue"] )
     {
-        TTGDistanceOptionsTVC *foo = segue.destinationViewController;
-        foo.meetEvent = self.meetEvent;
+        NSMutableArray *distances = [[NSMutableArray alloc] init];
+        for (NSNumber *distance in self.swimMeet.EventDistances) {
+            [distances addObject:[[TTGSwimOption alloc] initWithKey:[distance intValue]
+                                                     andDescription:[NSString stringWithFormat:@"%@  (%@)", distance, self.swimMeet.CourseTypeDescription]]];
+        }
+
+        TTGKeyValueOptionsTVC * vc = segue.destinationViewController;
+        vc.keyValueOptions = distances;
+        vc.selectedKey = self.meetEvent.distance;
+        vc.initialSegueId = segue.identifier;
+    }
+    else if ([segue.identifier isEqualToString:@"ageClassSegue"])
+    {
+        TTGKeyValueOptionsTVC * vc = segue.destinationViewController;
+        NSMutableArray *ages = [[NSMutableArray alloc] init];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:6 andDescription:@"6 and under"]];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:8 andDescription:@"8 and under"]];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:10 andDescription:@"10 and under"]];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:12 andDescription:@"12 and under"]];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:14 andDescription:@"14 and under"]];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:18 andDescription:@"18 and under"]];
+        [ages addObject:[[TTGSwimOption alloc] initWithKey:99 andDescription:@"open"]];
+
+        vc.selectedKey = self.meetEvent.maxAge;
+        vc.keyValueOptions = ages;
+        vc.initialSegueId = segue.identifier;
+    }
+}
+
+- (IBAction)done:(UIStoryboardSegue *)segue {
+    TTGKeyValueOptionsTVC *cc = [segue sourceViewController];
+    if ([cc.initialSegueId isEqualToString:@"distanceSegue"])
+    {
+        self.meetEvent.distance = cc.selectedKey;
+    }
+    else if ([cc.initialSegueId isEqualToString:@"ageClassSegue"])
+    {
+        self.meetEvent.maxAge = cc.selectedKey;
     }
 }
 
